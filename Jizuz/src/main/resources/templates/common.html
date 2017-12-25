@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title><text th:text="${page}" /></title>
+    <div th:include="inc/import :: css"></div>
+</head>
+
+<body class="flat-blue">
+	<div class="app-container">
+		<div class="row content-container">
+			<div th:include="inc/header :: top"></div>
+			<div th:include="inc/leftbar :: left"></div>
+		</div>            
+		<!-- Main Content -->
+		<div class="container-fluid">
+	    	<div th:if="${page}==index">
+	       		<div th:include="view/index :: container"></div>
+	       	</div>
+	       	
+	       	<!-- software -->
+	       	<div th:if="${page}==java">
+	       		<div th:include="view/software/java :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==py">
+	       		<div th:include="view/software/py :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==php">
+	       		<div th:include="view/software/php :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==webgl">
+	       		<div th:include="view/software/webgl :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==front">
+	       		<div th:include="view/software/front :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==problem">
+	       		<div th:include="view/software/problem :: container"></div>
+	       	</div>
+	       	
+	       	<!-- photograph -->
+	       	<div th:if="${page}==skills">
+	       		<div th:include="view/photograph/skills :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==photo">
+	       		<div th:include="view/photograph/photo :: container"></div>
+	       	</div>
+	       	
+	       	<!-- design -->
+	       	<div th:if="${page}==ps">
+	       		<div th:include="view/design/ps :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==ae">
+	       		<div th:include="view/designh/ae :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==pr">
+	       		<div th:include="view/design/pr :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==max">
+	       		<div th:include="view/design/max :: container"></div>
+	       	</div>
+	       	
+	       	<!-- sports -->
+	       	<div th:if="${page}==football">
+	       		<div th:include="view/sports/football :: container"></div>
+	       	</div>
+	       	
+	       	<!-- life -->
+	       	<div th:if="${page}==think">
+	       		<div th:include="view/life/think :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==times">
+	       		<div th:include="view/life/times :: container"></div>
+	       	</div>
+	       	
+	       	<!-- Jizuz -->
+	       	<div th:if="${page}==about">
+	       		<div th:include="view/jizuz/about :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==words">
+	       		<div th:include="view/jizuz/words :: container"></div>
+	       	</div>
+	       	
+	       	<!-- profile -->
+	       	<div th:if="${page}==profile">
+	       		<div th:include="view/profile/profile :: container"></div>
+	       	</div>
+	    </div>
+	</div>
+</body>
+<div th:include="inc/import :: js"></div>
+</html>

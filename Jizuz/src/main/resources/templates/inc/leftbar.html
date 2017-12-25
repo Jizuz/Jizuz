@@ -1,0 +1,132 @@
+<html>
+   <body>
+      <div th:fragment="left">
+         <div class="side-menu sidebar-inverse">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="side-menu-container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                            <div class="icon fa fa-paper-plane"></div>
+                            <div class="title">Jizuz</div>
+                        </a>
+                        <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a th:href="@{index}">
+                                <span class="icon fa fa-tachometer"></span><span class="title">主页</span>
+                            </a>
+                        </li>
+                        
+                        <!-- 软件 -->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-element">
+                                <span class="icon fa fa-desktop"></span><span class="title">软件工程</span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-element" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a th:href="@{/java}">Java</a></li>
+                                        <li><a href="py.html">Python</a></li>
+                                        <li><a href="php.html">Php</a></li>
+                                        <li><a href="webgl.html">WebGL</a></li>
+                                        <li><a href="front.html">前端</a></li>
+                                        <li><a href="problem.html">问题</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- 摄影 -->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-photo">
+                                <span class="icon fa fa-table"></span><span class="title">摄影</span>
+                            </a>
+                            <div id="dropdown-photo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="skills.html">摄影技巧</a></li>
+                                        <li><a href="photo.html">图片分享</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- 设计 -->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-design">
+                                <span class="icon fa fa-file-text-o"></span><span class="title">设计</span>
+                            </a>
+                            <div id="dropdown-design" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="ps.html">PhotoShop</a></li>
+                                        <li><a href="ae.html">AffterEffects</a></li>
+                                        <li><a href="pr.html">Premiere</a></li>
+                                        <li><a href="max.html">3Ds Max</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- 运动-->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#component-sport">
+                                <span class="icon fa fa-cubes"></span><span class="title">运动</span>
+                            </a>
+                            <div id="component-sport" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="football.html">足球</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- 生活 -->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-life">
+                                <span class="icon fa fa-slack"></span><span class="title">生活</span>
+                            </a>
+                            <div id="dropdown-life" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="think.html">随想</a></li>
+                                        <li><a href="times.html">时光</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- 关于我-->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-me">
+                                <span class="icon fa fa-archive"></span><span class="title">关于我</span>
+                            </a>
+                            <div id="dropdown-me" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="about.html">Jizuz</a></li>
+                                        <li><a href="words.html">留言</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- 个人信息 -->
+                        <li>
+                            <a href="profile.html">
+                                <span class="icon fa fa-thumbs-o-up"></span><span class="title">个人信息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+      </div>
+   </body>
+</html>
