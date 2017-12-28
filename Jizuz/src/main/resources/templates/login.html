@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<meta charset="UTF-8" />
+	<title>login</title>
+	<div th:include="inc/import :: css"></div>
+</head>
+<body class="flat-blue login-page">
+    <div class="container">
+        <div class="login-box">
+            <div>
+                <div class="login-form row">
+                    <div class="col-sm-12 text-center login-header">
+                        <i class="login-logo fa fa-connectdevelop fa-5x"></i>
+                        <h4 class="login-title">zShoon</h4>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="login-body">
+
+                            <form>
+                                <div class="control">
+                                    <input type="text" class="form-control" placeholder="用户名" />
+                                </div>
+                                <div class="control">
+                                    <input type="password" class="form-control" placeholder="密码" />
+                                </div>
+                                <div class="login-button text-center">
+                                    <input type="submit" class="btn btn-primary" value="Login" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="login-footer">
+                            <span class="text-right"><a href="#" class="color-white">忘记密码？</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<div th:include="inc/import :: js"></div>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zshoon.jizuz.dao.UserMapper">
+    <resultMap type="com.zshoon.jizuz.entity.UserDto" id="userMap">
+        <id property="uid" column="uid"/>
+        <result property="userName" column="user_name"/>
+        <result property="fullName" column="full_name"/>
+        <result property="password" column="password"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="tel" column="tel"/>
+        <result property="email" column="e_mail"/>
+        <result property="homeAddr" column="home_address"/>
+        <result property="nowAddr" column="now_address"/>
+        <result property="company" column="company"/>
+        <collection property="roles" ofType="com.zshoon.jizuz.entity.RoleDto">
+            <id property="rid" column="rid"/>
+            <result property="roleName" column="role_name"/>
+            <result property="comments" column="comments"/>
+            <collection property="modules" ofType="com.zshoon.jizuz.entity.PermissionDto">
+                <id property="pid" column="pid"/>
+                <result property="permissionName" column="permission_name"/>
+                <result property="comments" column="comments"/>
+            </collection>
+        </collection>
+    </resultMap>
+    
+    <select id="findByUserName" resultMap="userMap">
+        SELECT u.*, r.*, p.* FROM u_user u inner join u_user_role ur on ur.uid=u.uid 
+        inner join u_role r on r.rid=ur.rid
+        inner join u_role_permission pr on pr.rid=r.rid 
+        inner join u_permission p on pr.pid=p.pid 
+        WHERE user_name = #{username};
+    </select>
+</mapper>
