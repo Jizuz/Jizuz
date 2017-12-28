@@ -1,7 +1,7 @@
 # Jizuz
-springboot + thymeleaf + shiro + mybatis
+# springboot + thymeleaf + shiro + mybatis
 
-sql脚本
+# sql脚本
 /*
 Navicat MySQL Data Transfer
 
