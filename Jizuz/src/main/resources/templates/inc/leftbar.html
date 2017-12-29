@@ -1,4 +1,4 @@
-<html>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
    <body>
       <div th:fragment="left">
          <div class="side-menu sidebar-inverse">
@@ -72,7 +72,7 @@
                             </div>
                         </li>
                         
-                        <!-- 运动-->
+                        <!-- 运动 -->
                         <li class="panel panel-default dropdown">
                             <a data-toggle="collapse" href="#component-sport">
                                 <span class="icon fa fa-cubes"></span><span class="title">运动</span>
@@ -101,7 +101,7 @@
                             </div>
                         </li>
                         
-                        <!-- 关于我-->
+                        <!-- 关于我 -->
                         <li class="panel panel-default dropdown">
                             <a data-toggle="collapse" href="#dropdown-me">
                                 <span class="icon fa fa-archive"></span><span class="title">关于我</span>
@@ -122,6 +122,23 @@
                                 <span class="icon fa fa-thumbs-o-up"></span><span class="title">个人信息</span>
                             </a>
                         </li>
+                        
+                        <shiro:hasPermission name="view">
+                        <!-- 管理 -->
+                        <li class="panel panel-default dropdown">
+                            <a data-toggle="collapse" href="#dropdown-mgt">
+                                <span class="icon fa fa-archive"></span><span class="title">系统管理</span>
+                            </a>
+                            <div id="dropdown-mgt" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="memberMgt.html">会员管理</a></li>
+                                        <li><a href="articleMgt.html">文章管理</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        </shiro:hasPermission>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

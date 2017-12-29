@@ -84,6 +84,14 @@
 	       	<div th:if="${page}==profile">
 	       		<div th:include="view/profile/profile :: container"></div>
 	       	</div>
+	       	
+	       	<!-- management -->
+	       	<div th:if="${page}==memberMgt">
+	       		<div th:include="view/manage/memberMgt :: container"></div>
+	       	</div>
+	       	<div th:if="${page}==articleMgt">
+	       		<div th:include="view/manage/articleMgt :: container"></div>
+	       	</div>
 	    </div>
 	</div>
 </body>

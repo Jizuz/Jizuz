@@ -11,21 +11,19 @@
             <div>
                 <div class="login-form row">
                     <div class="col-sm-12 text-center login-header">
-                        <i class="login-logo fa fa-connectdevelop fa-5x"></i>
                         <h4 class="login-title">zShoon</h4>
                     </div>
                     <div class="col-sm-12">
                         <div class="login-body">
-
-                            <form>
+                            <form th:action="@{/loginUser}" method="post">
                                 <div class="control">
-                                    <input type="text" class="form-control" placeholder="用户名" />
+                                    <input type="text" class="form-control" name="username" placeholder="用户名" />
                                 </div>
                                 <div class="control">
-                                    <input type="password" class="form-control" placeholder="密码" />
+                                    <input type="password" class="form-control" name="password" placeholder="密码" />
                                 </div>
                                 <div class="login-button text-center">
-                                    <input type="submit" class="btn btn-primary" value="Login" />
+                                    <input type="submit" class="btn btn-primary" value="提交" />
                                 </div>
                             </form>
                         </div>

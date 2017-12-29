@@ -24,10 +24,5 @@ public class PageController {
 		model.addAttribute("page", "java");
 		return "common";
 	}
-	
-	@RequestMapping("/login")
-	public String toLogin() {
-		return "login";
-	}
 
 }

@@ -17,7 +17,7 @@
             <id property="rid" column="rid"/>
             <result property="roleName" column="role_name"/>
             <result property="comments" column="comments"/>
-            <collection property="modules" ofType="com.zshoon.jizuz.entity.PermissionDto">
+            <collection property="permissions" ofType="com.zshoon.jizuz.entity.PermissionDto">
                 <id property="pid" column="pid"/>
                 <result property="permissionName" column="permission_name"/>
                 <result property="comments" column="comments"/>
