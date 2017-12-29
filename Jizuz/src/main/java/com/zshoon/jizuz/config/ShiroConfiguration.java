@@ -15,6 +15,8 @@ import org.apache.shiro.mgt.SecurityManager;
 import com.zshoon.jizuz.config.AuthRealm;
 import com.zshoon.jizuz.config.CredentialsMatcher;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+
 @Configuration
 public class ShiroConfiguration {
 	@Bean(name = "shiroFilter")
@@ -32,8 +34,9 @@ public class ShiroConfiguration {
 		filterChainDefinitionMap.put("/js/**", "anon");
 		filterChainDefinitionMap.put("/img/**", "anon");
 		filterChainDefinitionMap.put("/lib/**", "anon");
+		filterChainDefinitionMap.put("/loginUser", "anon");
 		filterChainDefinitionMap.put("error*", "anon");
-		filterChainDefinitionMap.put("index*", "authc");
+		// filterChainDefinitionMap.put("index*", "anon");
 		// 需要认证才可以访问
 		filterChainDefinitionMap.put("/*", "authc");
 		// 需要认证才可以访问
@@ -85,4 +88,17 @@ public class ShiroConfiguration {
 		advisor.setSecurityManager(manager);
 		return advisor;
 	}
+
+	/**
+	 * 〈thymeleaf在shiro的configuaration的配置〉
+	 *
+	 * @return ShiroDialect
+	 * @author 17081480
+	 * @since v1.0.0
+	 */
+	@Bean
+	public ShiroDialect shiroDialect() {
+		return new ShiroDialect();
+	}
+
 }
