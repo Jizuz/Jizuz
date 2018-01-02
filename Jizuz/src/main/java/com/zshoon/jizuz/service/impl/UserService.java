@@ -1,5 +1,7 @@
 package com.zshoon.jizuz.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +15,11 @@ public class UserService implements IUserService {
 	
 	@Resource
 	private UserMapper mapper;
+	
+	@Override
+	public List<UserDto> findUsers() {
+		return mapper.findUsers();
+	}
 
 	@Override
 	public UserDto findUserByUserName(String username) {

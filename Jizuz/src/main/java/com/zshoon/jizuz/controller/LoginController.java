@@ -30,7 +30,6 @@ public class LoginController {
 			UserDto user = (UserDto) subject.getPrincipal();
 			session.setAttribute("user", user);
 			model.addAttribute("page", "index");
-//			model.addAttribute("userDto", user);
 			return "common";
 		} catch (Exception e) {
 			// 登录异常，返回登录页面重新登录
