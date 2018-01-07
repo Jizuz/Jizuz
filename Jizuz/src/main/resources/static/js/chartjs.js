@@ -61,17 +61,17 @@ $(function() {
 		value : 300,
 		color : "#FA2A00",
 		highlight : "#FA2A00",
-		label : "Red"
+		label : "女"
 	}, {
 		value : 50,
 		color : "#1ABC9C",
 		highlight : "#1ABC9C",
-		label : "Green"
+		label : "未知"
 	}, {
 		value : 100,
 		color : "#FABE28",
 		highlight : "#FABE28",
-		label : "Yellow"
+		label : "男"
 	} ];
 	myLineChart = new Chart(ctx).Pie(data, options);
 });
