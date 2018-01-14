@@ -3,136 +3,176 @@
 	<div th:fragment="container">
 		<div class="side-body">
 			<div class="row">
-	            <div class="col-xs-12">
-	                <div class="card">
-	                    <div class="row">
-	                        <div class="col-sm-12">
-	                        	<div class="card-body">
-		                            <table class="table table-hover table-bordered">
-		                                <thead>
-		                                    <tr>
-		                                        <th>编号</th>
-		                                        <th>用户昵称</th>
-		                                        <th>用户姓名</th>
-		                                        <th>生日</th>
-		                                        <th>性别</th>
-		                                        <th>联系电话</th>
-		                                        <th>电子邮件</th>
-		                                        <th>家庭住址</th>
-		                                        <th>联系地址</th>
-		                                        <th>公司</th>
-		                                        <th>编辑</th>
-		                                    </tr>
-		                                </thead>
-		                                <tbody>
-		                                    <tr th:each="user,userStat:${users}">
-		                                        <th th:text="${user.uid}"></th>
-		                                        <td th:text="${user.userName}"></td>
-		                                        <td th:text="${user.fullName}"></td>
-		                                        <td th:text="${user.birthday}"></td>
-		                                        <td th:text="${user.sex}"></td>
-		                                        <td th:text="${user.tel}"></td>
-		                                        <td th:text="${user.email}"></td>
-		                                        <td th:text="${user.homeAddr}"></td>
-		                                        <td th:text="${user.nowAddr}"></td>
-		                                        <td th:text="${user.company}"></td>
-		                                        <td>
-			                                        <a th:href="@{onclickEdit?uid=${user.uid}}" data-toggle="modal" data-target="#modalSuccess">
-			                                        	<span class="glyphicon glyphicon-pencil"></span>
-			                                        </a>
-		                                        	<!-- Modal -->
-												    <div class="modal fade modal-info" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-												        <div class="modal-dialog">
-												            <div class="modal-content">
-												                <div class="modal-header">
-												                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												                    <h4 class="modal-title" id="myModalLabel">编辑会员信息</h4>
-												                </div>
-												                <div class="modal-body">
-											                        <div class="col-xs-12">
-									                                    <form class="form-horizontal">
-									                                    <div class="form-group">
-									                                            <label for="nickName" class="col-sm-2 control-label">用户昵称</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="text" class="form-control" id="nickName" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="fullName" class="col-sm-2 control-label">用户昵称</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="text" class="form-control" id="fullName" placeholder="Email">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="birth" class="col-sm-2 control-label">生日</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="text" class="form-control" id="birth" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="sex" class="col-sm-2 control-label">性别</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="text" class="form-control" id="sex" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="tel" class="col-sm-2 control-label">联系电话</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="text" class="form-control" id="tel" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="email" class="col-sm-2 control-label">电子邮件</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="text" class="form-control" id="email" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="home" class="col-sm-2 control-label">家庭住址</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="password" class="form-control" id="home" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="current" class="col-sm-2 control-label">联系住址</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="password" class="form-control" id="current" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                        <div class="form-group">
-									                                            <label for="company" class="col-sm-2 control-label">公司</label>
-									                                            <div class="col-sm-10">
-									                                                <input type="password" class="form-control" id="company" placeholder="Password">
-									                                            </div>
-									                                        </div>
-									                                    </form>
-											                    	</div>
-											                    </div>
-												                <div class="modal-footer">
-												                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-												                    <button type="button" class="btn btn-info">确定</button>
-												                </div>
-												            </div>
-												        </div>
-												    </div>
-		                                        </td>
-		                                    </tr>
-		                                </tbody>
-		                            </table>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="card-body">
+							<form class="form-inline">
+								<div class="form-group">
+									<label for="exampleInputName2">会员编号</label> <input type="text"
+										class="form-control" id="exampleInputName2" placeholder="name">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail2">会员昵称</label> <input
+										type="email" class="form-control" id="exampleInputEmail2"
+										placeholder="tel">
+								</div>
+								<button type="submit" class="btn btn-info">查询</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-sm-2">
+											<button type="button" class="btn btn-info">+ 添加</button>
+											<button type="button" class="btn btn-info">- 删除</button>
+										</div>
+									</div>
+									<table class="table table-hover table-bordered">
+										<thead>
+											<tr>
+												<th>编号</th>
+												<th>用户昵称</th>
+												<th>用户姓名</th>
+												<th>生日</th>
+												<th>性别</th>
+												<th>联系电话</th>
+												<th>电子邮件</th>
+												<th>家庭住址</th>
+												<th>联系地址</th>
+												<th>公司</th>
+												<th>编辑</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="user,userStat:${users}">
+												<th th:text="${user.uid}"></th>
+												<td th:text="${user.userName}"></td>
+												<td th:text="${user.fullName}"></td>
+												<td th:text="${user.birthday}"></td>
+												<td th:text="${user.sex}"></td>
+												<td th:text="${user.tel}"></td>
+												<td th:text="${user.email}"></td>
+												<td th:text="${user.homeAddr}"></td>
+												<td th:text="${user.nowAddr}"></td>
+												<td th:text="${user.company}"></td>
+												<td>
+													<span id="mbrEdit" value="" th:value="${user.uid}"
+													class="glyphicon glyphicon-pencil" data-toggle="modal"
+													data-target="#modalInfo"></span>
+													<!-- <a data-toggle="modal" data-target="#modalInfo">编辑</a> -->
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<!-- Modal -->
+									<div class="modal fade modal-info" id="modalInfo" tabindex="-1"
+										role="dialog" aria-labelledby="myModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+													<h4 class="modal-title" id="myModalLabel">编辑会员信息</h4>
+												</div>
+												<div class="modal-body">
+													<div class="col-xs-12">
+														<form class="form-horizontal">
+															<div class="form-group">
+																<label for="nickName" class="col-sm-2 control-label">用户昵称</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="nickName" placeholder="请输入昵称" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="fullName" class="col-sm-2 control-label">用户姓名</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="fullName" disabled="disabled"  />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="birth" class="col-sm-2 control-label">生日</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="birth" placeholder="请输入生日" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="tel" class="col-sm-2 control-label">联系电话</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="tel" placeholder="请输入联系电话" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="email" class="col-sm-2 control-label">电子邮件</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="email" placeholder="请输入邮箱" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="home" class="col-sm-2 control-label">家庭住址</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="home" placeholder="请输入家庭住址" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="current" class="col-sm-2 control-label">联系住址</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="current" placeholder="请输入联系地址" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="company" class="col-sm-2 control-label">公司</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="company" placeholder="请输入公司" />
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">取消</button>
+													<button type="button" class="btn btn-info">确定</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-xs-12 col-md-offset-10">
+										<nav>
+											<ul class="pagination">
+												<li><a href="#" aria-label="Previous"> <span
+														aria-hidden="true">&laquo;</span>
+												</a></li>
+												<li class="active"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#" aria-label="Next"> <span
+														aria-hidden="true">&raquo;</span>
+												</a></li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	
+
 </body>
-<script type="text/javascript">
-	function editInfo() {
-		var u_id = uid;
-		alert(u_id);
-	}
-</script>
 </html>

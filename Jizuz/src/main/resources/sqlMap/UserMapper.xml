@@ -55,4 +55,12 @@
     	<include refid="Base_Column_List" />
     	from u_user
     </select>
+    
+    <select id="findByUid" resultMap="userMap">
+    	SELECT u.*, r.*, p.* FROM u_user u inner join u_user_role ur on ur.uid=u.uid 
+        inner join u_role r on r.rid=ur.rid
+        inner join u_role_permission pr on pr.rid=r.rid 
+        inner join u_permission p on pr.pid=p.pid 
+        WHERE u.uid = #{uid};
+    </select>
 </mapper>

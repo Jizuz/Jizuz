@@ -12,5 +12,7 @@ public interface UserMapper {
 	public List<UserDto> findUsers();
 
 	public UserDto findByUserName(String username);
+	
+	public UserDto findByUid(int uid);
 
 }

@@ -26,4 +26,8 @@ public class UserService implements IUserService {
 		return mapper.findByUserName(username);
 	}
 
+	@Override
+	public UserDto findUserBuUid(int uid) {
+		return mapper.findByUid(uid);
+	}
 }

@@ -10,4 +10,6 @@ public interface IUserService {
 	
 	public UserDto findUserByUserName(String username);
 	
+	public UserDto findUserBuUid(int uid);
+	
 }
