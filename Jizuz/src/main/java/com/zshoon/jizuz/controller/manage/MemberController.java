@@ -32,25 +32,25 @@ import com.zshoon.jizuz.service.IUserService;
  */
 @Controller
 public class MemberController {
-	
+
 	/**
 	 * logger
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
+
 	@Autowired
 	private IUserService userService;
-	
+
 	@ResponseBody
-	@RequestMapping(value="getUserById", method=RequestMethod.POST)
+	@RequestMapping(value = "getUserById", method = RequestMethod.POST)
 	public String getMemberById(@RequestParam String uid, Model model) {
 		UserDto user = userService.findUserBuUid(Integer.parseInt(uid));
 		logger.debug("user = {}", JSON.toJSONString(user));
-		if (user != null) {
-			model.addAttribute("userx", user);
-		} else {
-			model.addAttribute("userx", new UserDto());
-		}
+		// if (user != null) {
+		// model.addAttribute("userx", user);
+		// } else {
+		// model.addAttribute("userx", new UserDto());
+		// }
 		String ret = JSON.toJSONString(user);
 		return ret;
 	}

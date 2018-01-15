@@ -8,13 +8,19 @@
 						<div class="card-body">
 							<form class="form-inline">
 								<div class="form-group">
-									<label for="exampleInputName2">会员编号</label> <input type="text"
-										class="form-control" id="exampleInputName2" placeholder="name">
+									<label for="userId">会员编号</label> <input type="text" class="form-control" id="userId" placeholder="id">
 								</div>
+								&nbsp;&nbsp;
 								<div class="form-group">
-									<label for="exampleInputEmail2">会员昵称</label> <input
-										type="email" class="form-control" id="exampleInputEmail2"
-										placeholder="tel">
+									<label for="nkName">会员昵称</label> <input type="text" class="form-control" id="nkName" placeholder="nickName">
+								</div>
+								&nbsp;&nbsp;
+								<div class="form-group">
+									<label for="tele">联系电话</label> <input type="text" class="form-control" id="tele" placeholder="telephone">
+								</div>
+								&nbsp;&nbsp;
+								<div class="form-group">
+									<label for="mail">电子邮件</label> <input type="text" class="form-control" id="mail" placeholder="e-mail">
 								</div>
 								<button type="submit" class="btn btn-info">查询</button>
 							</form>
@@ -38,6 +44,7 @@
 									<table class="table table-hover table-bordered">
 										<thead>
 											<tr>
+												<th></th>
 												<th>编号</th>
 												<th>用户昵称</th>
 												<th>用户姓名</th>
@@ -53,6 +60,11 @@
 										</thead>
 										<tbody>
 											<tr th:each="user,userStat:${users}">
+												<th>
+													<div class="checkbox-inline">
+			                                            <input type="checkbox" id="checkbox" checked="">
+                                          			</div>
+												</th>
 												<th th:text="${user.uid}"></th>
 												<td th:text="${user.userName}"></td>
 												<td th:text="${user.fullName}"></td>
@@ -63,11 +75,10 @@
 												<td th:text="${user.homeAddr}"></td>
 												<td th:text="${user.nowAddr}"></td>
 												<td th:text="${user.company}"></td>
-												<td>
-													<span id="mbrEdit" value="" th:value="${user.uid}"
-													class="glyphicon glyphicon-pencil" data-toggle="modal"
+												<td align='center'>
+													<span value="" th:value="${user.uid}"
+													class="mbrEdit glyphicon glyphicon-pencil" data-toggle="modal"
 													data-target="#modalInfo"></span>
-													<!-- <a data-toggle="modal" data-target="#modalInfo">编辑</a> -->
 												</td>
 											</tr>
 										</tbody>
@@ -90,6 +101,12 @@
 													<div class="col-xs-12">
 														<form class="form-horizontal">
 															<div class="form-group">
+																<label for="uid" class="col-sm-2 control-label">id</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="uid" disabled="disabled"  />
+																</div>
+															</div>
+															<div class="form-group">
 																<label for="nickName" class="col-sm-2 control-label">用户昵称</label>
 																<div class="col-sm-10">
 																	<input type="text" class="form-control" id="nickName" placeholder="请输入昵称" />
@@ -99,12 +116,6 @@
 																<label for="fullName" class="col-sm-2 control-label">用户姓名</label>
 																<div class="col-sm-10">
 																	<input type="text" class="form-control" id="fullName" disabled="disabled"  />
-																</div>
-															</div>
-															<div class="form-group">
-																<label for="birth" class="col-sm-2 control-label">生日</label>
-																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="birth" placeholder="请输入生日" />
 																</div>
 															</div>
 															<div class="form-group">
@@ -120,21 +131,21 @@
 																</div>
 															</div>
 															<div class="form-group">
-																<label for="home" class="col-sm-2 control-label">家庭住址</label>
-																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="home" placeholder="请输入家庭住址" />
-																</div>
-															</div>
-															<div class="form-group">
-																<label for="current" class="col-sm-2 control-label">联系住址</label>
-																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="current" placeholder="请输入联系地址" />
-																</div>
-															</div>
-															<div class="form-group">
 																<label for="company" class="col-sm-2 control-label">公司</label>
 																<div class="col-sm-10">
 																	<input type="text" class="form-control" id="company" placeholder="请输入公司" />
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="company" class="col-sm-2 control-label">角色</label>
+																<div class="col-sm-10">
+							                                        <select>
+							                                            <optgroup label="authority" index='99'>
+							                                                <option value="MG">管理员</option>
+							                                                <option value="MB">会员</option>
+							                                                <option value="TR">游客</option>
+							                                            </optgroup>
+							                                        </select>
 																</div>
 															</div>
 														</form>
@@ -143,7 +154,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default"
 														data-dismiss="modal">取消</button>
-													<button type="button" class="btn btn-info">确定</button>
+													<button type="button" class="btn btn-info" id="mbrUpdate">确定</button>
 												</div>
 											</div>
 										</div>
@@ -173,6 +184,11 @@
 			</div>
 		</div>
 	</div>
-
 </body>
+<script th:inline="javascript">
+	//<![CDATA[
+	var uid = /*[[${user.uid}]]*/ '10000';
+
+	// ]]>
+</script>
 </html>

@@ -9,6 +9,10 @@ body {
 	font-size: 13px;
 }
 
+.table>thead>tr>th {
+	text-align: center;
+}
+
 * {
 	outline: none;
 }
@@ -816,15 +820,15 @@ a:hover {
 }
 
 .checkbox3 label, .radio3 label {
-	padding: 8px 0 8px 30px;
+	padding: 8px 0 8px 0px;
 }
 
 .checkbox3 label::before, .radio3 label::before {
-	top: 5px;
+	top: 2px;
 }
 
 .checkbox3 label::after, .radio3 label::after {
-	top: 5px;
+	top: 2px;
 }
 
 .checkbox3 label, .radio3 label, .checkbox-inline, .radio-inline {

@@ -1,27 +1,35 @@
 $(function() {
-	$('#modalInfo').on('shown.bs.modal', function () {
-		var uid = $('#mbrEdit').attr('value');
+	var _uid = null;
+
+	/* <![CDATA[ */
+	$('.mbrEdit').click(function() {
+		_uid = $(this).attr('value');
+	});
+
+	$('#modalInfo').on('shown.bs.modal', function() {
+		// var uid = /*[[${user.uid}]]*/ '10001';
 		$.ajax({
-			type:"post",
-			url:"getUserById",
-//			data:{"uid":"10001"},
-			data:{"uid":uid},
-			dataType:"json",
-			success:function(data) {
+			type : "post",
+			url : "getUserById",
+			data : {
+				"uid" : _uid
+			},
+			dataType : "json",
+			async : false,
+			success : function(data) {
 				if (data != null) {
+					$("#uid").val(data.uid);
 					$("#nickName").val(data.userName);
 					$("#fullName").val(data.fullName);
-					$("#birth").val(data.birthday);
 					$("#tel").val(data.tel);
 					$("#email").val(data.email);
-					$("#home").val(data.homeAddr);
-					$("#current").val(data.nowAddr);
 					$("#company").val(data.company);
 				}
 			},
-			error:function(data, error) {
+			error : function(data, error) {
 				alert("faild! " + error);
 			}
 		});
 	});
+	/* ]]> */
 });
