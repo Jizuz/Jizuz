@@ -10,6 +10,9 @@ import javax.annotation.Resource;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zshoon.jizuz.common.utils.DateUtil;
 import com.zshoon.jizuz.dao.UserMapper;
@@ -19,6 +22,7 @@ import com.zshoon.jizuz.entity.dto.UserDto;
 import com.zshoon.jizuz.entity.po.PermissionPo;
 import com.zshoon.jizuz.entity.po.RolePo;
 import com.zshoon.jizuz.entity.po.UserPo;
+import com.zshoon.jizuz.entity.po.UserRolePo;
 import com.zshoon.jizuz.service.IUserService;
 
 @Service
@@ -57,8 +61,14 @@ public class UserService implements IUserService {
 		return dto;
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
 	public void updateUserAndRole(UserPo userPo, RolePo rolePo) {
-
+		mapper.updateUserByUid4Edit(userPo);
+		UserRolePo po = new UserRolePo();
+		po.setRid(rolePo.getRid());
+		po.setUid(userPo.getUid());
+		mapper.updateUserRoleByUid4Edit(po);
 	}
 
 	/**

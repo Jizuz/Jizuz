@@ -40,15 +40,19 @@
 		<result property="company" column="company" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		uid, user_name, full_name, password, birthday, sex, tel, e_mail,
+		uid, user_name, full_name, password, birthday, sex, tel,
+		e_mail,
 		home_address, now_address, company
 	</sql>
 
 	<select id="findByUserName" resultMap="userMap">
-		SELECT u.*, r.*, p.* FROM u_user u inner join u_user_role ur on ur.uid=u.uid
-		inner join u_role r on r.rid=ur.rid
+		SELECT u.*, r.*, p.* FROM
+		u_user u inner join u_user_role ur on ur.uid=u.uid
+		inner join u_role r
+		on r.rid=ur.rid
 		inner join u_role_permission pr on pr.rid=r.rid
-		inner join u_permission p on pr.pid=p.pid
+		inner
+		join u_permission p on pr.pid=p.pid
 		WHERE user_name = #{username};
 	</select>
 
@@ -59,38 +63,41 @@
 	</select>
 
 	<select id="findByUid" resultMap="userMap">
-		SELECT u.*, r.*, p.* FROM u_user u inner join u_user_role ur on ur.uid=u.uid
-		inner join u_role r on r.rid=ur.rid
+		SELECT u.*, r.*, p.* FROM
+		u_user u inner join u_user_role ur on ur.uid=u.uid
+		inner join u_role r
+		on r.rid=ur.rid
 		inner join u_role_permission pr on pr.rid=r.rid
-		inner join u_permission p on pr.pid=p.pid
+		inner
+		join u_permission p on pr.pid=p.pid
 		WHERE u.uid = #{uid};
 	</select>
-	
+
 	<update id="updateUserByUid4Edit" parameterType="com.zshoon.jizuz.entity.po.UserPo">
 		update u_user
 		<set>
 			<if test="userName != null">
-				userName = #{userName, jdbcType=VARCHAR},
+				user_name = #{userName, jdbcType=VARCHAR},
 			</if>
 			<if test="tel != null">
 				tel = #{tel, jdbcType=VARCHAR},
 			</if>
 			<if test="email != null">
-				email = #{email, jdbcType=VARCHAR},
+				e_mail = #{email, jdbcType=VARCHAR},
 			</if>
 			<if test="company != null">
-				company = #{company, jdbcType=VARCHAR},
+				company = #{company, jdbcType=VARCHAR}
 			</if>
-			where uid = #{uid}
 		</set>
+		where u_user.uid = #{uid}
 	</update>
-	<update id="updateUserRoleByUid">
+	<update id="updateUserRoleByUid4Edit" parameterType="com.zshoon.jizuz.entity.po.UserRolePo">
 		update u_user_role
 		<set>
 			<if test="rid != null">
-				rid = #{rid, jdbcType=INTEGER},
+				rid = #{rid}
 			</if>
-			where uid = #{uid}
 		</set>
+		where uid = #{uid}
 	</update>
 </mapper>

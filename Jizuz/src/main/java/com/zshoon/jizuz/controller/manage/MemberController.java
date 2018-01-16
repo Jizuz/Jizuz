@@ -61,7 +61,7 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping(value = "updateUserById", method = RequestMethod.POST)
-	public void updateUserById(HttpServletRequest request) {
+	public String updateUserById(HttpServletRequest request) {
 		String rid = request.getParameter("rid");
 
 		UserDto userDto = new UserDto();
@@ -75,11 +75,13 @@ public class MemberController {
 		roleDto.setRid(Long.valueOf(rid));
 
 		UserPo userPo = new UserPo();
-		BeanUtils.copyProperties(roleDto, userPo);
+		BeanUtils.copyProperties(userDto, userPo);
 		RolePo rolePo = new RolePo();
 		BeanUtils.copyProperties(roleDto, rolePo);
 		userPo.setRole(rolePo);
 
+		userService.updateUserAndRole(userPo, rolePo);
+		return JSON.toJSONString("success");
 	}
 
 }

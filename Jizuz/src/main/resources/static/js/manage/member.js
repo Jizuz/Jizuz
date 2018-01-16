@@ -42,11 +42,11 @@ $(function() {
 	});
 	
 	$("#mbrUpdate").click(function() {
-		var rid = 3;
+		var rid = 2;
 		var allRids = $("input:radio[name='auth']");
-		for (var i=0; i<allRids.length; i++) {
+		for (var i = 0; i < allRids.length; i++) {
 			if (allRids[i].checked) {
-				rid = i; 
+				rid = i + 1; 
 			}
 		}
 		
