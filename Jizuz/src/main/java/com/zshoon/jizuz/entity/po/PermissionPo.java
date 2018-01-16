@@ -1,34 +1,28 @@
-package com.zshoon.jizuz.entity;
+package com.zshoon.jizuz.entity.po;
 
-import java.io.Serializable;
 import java.util.Set;
 
-public class PermissionDto implements Serializable {
+public class PermissionPo {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = -3281162032906507509L;
-	
 	/**
 	 * pid
 	 */
 	private Long pid;
-	
+
 	/**
 	 * permissionName
 	 */
 	private String permissionName;
-	
+
 	/**
 	 * comments
 	 */
 	private String comments;
-	
+
 	/**
 	 * roles
 	 */
-	private Set<RoleDto> roles;
+	private Set<RolePo> roles;
 
 	/**
 	 * @return the pid
@@ -38,7 +32,8 @@ public class PermissionDto implements Serializable {
 	}
 
 	/**
-	 * @param pid the pid to set
+	 * @param pid
+	 *            the pid to set
 	 */
 	public void setPid(Long pid) {
 		this.pid = pid;
@@ -52,7 +47,8 @@ public class PermissionDto implements Serializable {
 	}
 
 	/**
-	 * @param permissionName the permissionName to set
+	 * @param permissionName
+	 *            the permissionName to set
 	 */
 	public void setPermissionName(String permissionName) {
 		this.permissionName = permissionName;
@@ -66,7 +62,8 @@ public class PermissionDto implements Serializable {
 	}
 
 	/**
-	 * @param comments the comments to set
+	 * @param comments
+	 *            the comments to set
 	 */
 	public void setComments(String comments) {
 		this.comments = comments;
@@ -75,27 +72,29 @@ public class PermissionDto implements Serializable {
 	/**
 	 * @return the roles
 	 */
-	public Set<RoleDto> getRoles() {
+	public Set<RolePo> getRoles() {
 		return roles;
 	}
 
 	/**
-	 * @param roles the roles to set
+	 * @param roles
+	 *            the roles to set
 	 */
-	public void setRoles(Set<RoleDto> roles) {
+	public void setRoles(Set<RolePo> roles) {
 		this.roles = roles;
 	}
 
 	/**
 	 * 〈功能详细描述〉
+	 * 
 	 * @return String
 	 * @author Jizuz
 	 * @since v1.0.0
 	 */
 	@Override
 	public String toString() {
-		return "PermissionDto [pid=" + pid + ", permissionName=" + permissionName + ", comments=" + comments
-				+ ", roles=" + roles + "]";
+		return "PermissionPo [pid=" + pid + ", permissionName=" + permissionName + ", comments=" + comments + ", roles="
+				+ roles + "]";
 	}
 
 }

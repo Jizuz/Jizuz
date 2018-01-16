@@ -820,7 +820,7 @@ a:hover {
 }
 
 .checkbox3 label, .radio3 label {
-	padding: 8px 0 8px 0px;
+	padding: 8px 0 8px 30px;
 }
 
 .checkbox3 label::before, .radio3 label::before {

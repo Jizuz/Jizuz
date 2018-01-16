@@ -1,8 +1,6 @@
-package com.zshoon.jizuz.entity;
+package com.zshoon.jizuz.entity.dto;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
 
 /**
  * 〈功能详细描述〉
@@ -40,7 +38,7 @@ public class UserDto implements Serializable {
 	/**
 	 * birthday:用户生日
 	 */
-	private Date birthday;
+	private String birthday;
 
 	/**
 	 * sex:用户性别
@@ -73,9 +71,9 @@ public class UserDto implements Serializable {
 	private String company;
 
 	/**
-	 * roles:用户权限
+	 * roles:用户角色
 	 */
-	private Set<RoleDto> roles;
+	private RoleDto role;
 
 	/**
 	 * @return the uid
@@ -140,7 +138,7 @@ public class UserDto implements Serializable {
 	/**
 	 * @return the birthday
 	 */
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
@@ -148,7 +146,7 @@ public class UserDto implements Serializable {
 	 * @param birthday
 	 *            the birthday to set
 	 */
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
@@ -243,18 +241,18 @@ public class UserDto implements Serializable {
 	}
 
 	/**
-	 * @return the roles
+	 * @return the role
 	 */
-	public Set<RoleDto> getRoles() {
-		return roles;
+	public RoleDto getRole() {
+		return role;
 	}
 
 	/**
 	 * @param roles
-	 *            the roles to set
+	 *            the role to set
 	 */
-	public void setRoles(Set<RoleDto> roles) {
-		this.roles = roles;
+	public void setRole(RoleDto role) {
+		this.role = role;
 	}
 
 	/**
@@ -268,7 +266,7 @@ public class UserDto implements Serializable {
 	public String toString() {
 		return "UserDto [uid=" + uid + ", userName=" + userName + ", fullName=" + fullName + ", password=" + password
 				+ ", birthday=" + birthday + ", sex=" + sex + ", tel=" + tel + ", email=" + email + ", homeAddr="
-				+ homeAddr + ", nowAddr=" + nowAddr + ", company=" + company + ", roles=" + roles + "]";
+				+ homeAddr + ", nowAddr=" + nowAddr + ", company=" + company + ", role=" + role + "]";
 	}
 
 }

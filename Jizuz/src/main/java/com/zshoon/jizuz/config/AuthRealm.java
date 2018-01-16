@@ -15,9 +15,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.zshoon.jizuz.entity.PermissionDto;
-import com.zshoon.jizuz.entity.RoleDto;
-import com.zshoon.jizuz.entity.UserDto;
+import com.zshoon.jizuz.entity.dto.PermissionDto;
+import com.zshoon.jizuz.entity.dto.RoleDto;
+import com.zshoon.jizuz.entity.dto.UserDto;
 import com.zshoon.jizuz.service.IUserService;
 
 /**
@@ -38,14 +38,12 @@ public class AuthRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) throws AuthenticationException {
 		UserDto user = (UserDto) principal.fromRealm(this.getClass().getName()).iterator().next();// 获取session中的用户
 		List<String> permissions = new ArrayList<>();
-		Set<RoleDto> roles = user.getRoles();
-		if (roles.size() > 0) {
-			for (RoleDto role : roles) {
-				Set<PermissionDto> modules = role.getPermissions();
-				if (modules.size() > 0) {
-					for (PermissionDto module : modules) {
-						permissions.add(module.getPermissionName());
-					}
+		RoleDto role = user.getRole();
+		if (role != null) {
+			Set<PermissionDto> modules = role.getPermissions();
+			if (modules.size() > 0) {
+				for (PermissionDto module : modules) {
+					permissions.add(module.getPermissionName());
 				}
 			}
 		}

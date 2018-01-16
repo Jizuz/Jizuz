@@ -1,4 +1,4 @@
-package com.zshoon.jizuz.entity;
+package com.zshoon.jizuz.entity.dto;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -15,27 +15,27 @@ public class RoleDto implements Serializable {
 	 * serialVersionUID
 	 */
 	private static final long serialVersionUID = 3803263564903188215L;
-	
+
 	/**
 	 * rid
 	 */
 	private Long rid;
-	
+
 	/**
 	 * roleName
 	 */
 	private String roleName;
-	
+
 	/**
 	 * comments
 	 */
 	private String comments;
-	
+
 	/**
 	 * users
 	 */
 	private Set<UserDto> users;
-	
+
 	/**
 	 * permissions
 	 */
@@ -49,7 +49,8 @@ public class RoleDto implements Serializable {
 	}
 
 	/**
-	 * @param rid the rid to set
+	 * @param rid
+	 *            the rid to set
 	 */
 	public void setRid(Long rid) {
 		this.rid = rid;
@@ -63,7 +64,8 @@ public class RoleDto implements Serializable {
 	}
 
 	/**
-	 * @param roleName the roleName to set
+	 * @param roleName
+	 *            the roleName to set
 	 */
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
@@ -77,7 +79,8 @@ public class RoleDto implements Serializable {
 	}
 
 	/**
-	 * @param comments the comments to set
+	 * @param comments
+	 *            the comments to set
 	 */
 	public void setComments(String comments) {
 		this.comments = comments;
@@ -91,7 +94,8 @@ public class RoleDto implements Serializable {
 	}
 
 	/**
-	 * @param users the users to set
+	 * @param users
+	 *            the users to set
 	 */
 	public void setUsers(Set<UserDto> users) {
 		this.users = users;
@@ -105,7 +109,8 @@ public class RoleDto implements Serializable {
 	}
 
 	/**
-	 * @param permissions the permissions to set
+	 * @param permissions
+	 *            the permissions to set
 	 */
 	public void setPermissions(Set<PermissionDto> permissions) {
 		this.permissions = permissions;
@@ -113,6 +118,7 @@ public class RoleDto implements Serializable {
 
 	/**
 	 * 〈功能详细描述〉
+	 * 
 	 * @return String
 	 * @author Jizuz
 	 * @since v1.0.0

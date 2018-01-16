@@ -1,5 +1,6 @@
 package com.zshoon.jizuz.common.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -87,6 +88,36 @@ public class DateUtil {
 		return date2String(date, DEFAULT_DATE_FORMAT);
 	}
 
+	/*
+	 * String类型转换成日期类型
+	 */
+	public static Date string2Date(String dateStr, String format) {
+		Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        try {
+            date = sdf.parse(dateStr);
+
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("string转化日期异常:", e);
+        }
+
+        return date;
+	}
+	
+	/*
+	 * 将一个Date格式的string 转换成 指定格式的string
+	 */
+	public static String stringDate2String(String dateStr, String format) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        Date formatDate = null;
+        try {
+            formatDate = dateFormat.parse(dateStr);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("the date：" + dateStr + "could not be parsed.", e);
+        }
+        return dateFormat.format(formatDate);
+	}
+	
 	/*
 	 * 文件名时间命名，yyyyMMdd_HHmmss
 	 */

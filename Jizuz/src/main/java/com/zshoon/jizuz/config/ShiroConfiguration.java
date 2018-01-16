@@ -44,7 +44,6 @@ public class ShiroConfiguration {
 		// filterChainDefinitionMap.put("index*", "anon");
 		// 需要认证才可以访问
 		filterChainDefinitionMap.put("/*", "authc");
-		// 需要认证才可以访问
 		filterChainDefinitionMap.put("/**", "authc");
 		filterChainDefinitionMap.put("/*.*", "authc");
 		bean.setFilterChainDefinitionMap(filterChainDefinitionMap);

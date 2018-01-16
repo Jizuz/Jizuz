@@ -10,18 +10,24 @@
  */
 package com.zshoon.jizuz.controller.manage;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.zshoon.jizuz.entity.UserDto;
+import com.zshoon.jizuz.common.utils.DateUtil;
+import com.zshoon.jizuz.entity.dto.RoleDto;
+import com.zshoon.jizuz.entity.dto.UserDto;
+import com.zshoon.jizuz.entity.po.RolePo;
+import com.zshoon.jizuz.entity.po.UserPo;
 import com.zshoon.jizuz.service.IUserService;
 
 /**
@@ -43,16 +49,37 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping(value = "getUserById", method = RequestMethod.POST)
-	public String getMemberById(@RequestParam String uid, Model model) {
+	public String getMemberById(@RequestParam String uid) {
 		UserDto user = userService.findUserBuUid(Integer.parseInt(uid));
+		String date = DateUtil.stringDate2String(user.getBirthday(), DateUtil.DATE_FORMAT_1);
+		user.setBirthday(date);
 		logger.debug("user = {}", JSON.toJSONString(user));
-		// if (user != null) {
-		// model.addAttribute("userx", user);
-		// } else {
-		// model.addAttribute("userx", new UserDto());
-		// }
+
 		String ret = JSON.toJSONString(user);
 		return ret;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "updateUserById", method = RequestMethod.POST)
+	public void updateUserById(HttpServletRequest request) {
+		String rid = request.getParameter("rid");
+
+		UserDto userDto = new UserDto();
+		userDto.setUid(Long.valueOf(request.getParameter("uid")));
+		userDto.setUserName(request.getParameter("userName"));
+		userDto.setTel(request.getParameter("tel"));
+		userDto.setEmail(request.getParameter("email"));
+		userDto.setCompany(request.getParameter("company"));
+
+		RoleDto roleDto = new RoleDto();
+		roleDto.setRid(Long.valueOf(rid));
+
+		UserPo userPo = new UserPo();
+		BeanUtils.copyProperties(roleDto, userPo);
+		RolePo rolePo = new RolePo();
+		BeanUtils.copyProperties(roleDto, rolePo);
+		userPo.setRole(rolePo);
+
 	}
 
 }

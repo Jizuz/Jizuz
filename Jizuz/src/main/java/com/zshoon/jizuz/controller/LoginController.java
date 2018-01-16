@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.zshoon.jizuz.entity.UserDto;
+import com.zshoon.jizuz.entity.dto.UserDto;
 
 @Controller
 public class LoginController {
@@ -20,7 +20,7 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value="/loginUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginUser", method = RequestMethod.POST)
 	public String loginUser(String username, String password, HttpSession session, Model model) {
 		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
 		Subject subject = SecurityUtils.getSubject();

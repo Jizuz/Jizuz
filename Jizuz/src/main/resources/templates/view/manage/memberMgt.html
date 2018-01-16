@@ -8,19 +8,23 @@
 						<div class="card-body">
 							<form class="form-inline">
 								<div class="form-group">
-									<label for="userId">会员编号</label> <input type="text" class="form-control" id="userId" placeholder="id">
+									<label for="userId">会员编号</label> <input type="text"
+										class="form-control" id="userId" placeholder="id">
 								</div>
 								&nbsp;&nbsp;
 								<div class="form-group">
-									<label for="nkName">会员昵称</label> <input type="text" class="form-control" id="nkName" placeholder="nickName">
+									<label for="nkName">会员昵称</label> <input type="text"
+										class="form-control" id="nkName" placeholder="nickName">
 								</div>
 								&nbsp;&nbsp;
 								<div class="form-group">
-									<label for="tele">联系电话</label> <input type="text" class="form-control" id="tele" placeholder="telephone">
+									<label for="tele">联系电话</label> <input type="text"
+										class="form-control" id="tele" placeholder="telephone">
 								</div>
 								&nbsp;&nbsp;
 								<div class="form-group">
-									<label for="mail">电子邮件</label> <input type="text" class="form-control" id="mail" placeholder="e-mail">
+									<label for="mail">电子邮件</label> <input type="text"
+										class="form-control" id="mail" placeholder="e-mail">
 								</div>
 								<button type="submit" class="btn btn-info">查询</button>
 							</form>
@@ -28,7 +32,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
@@ -62,8 +66,8 @@
 											<tr th:each="user,userStat:${users}">
 												<th>
 													<div class="checkbox-inline">
-			                                            <input type="checkbox" id="checkbox" checked="">
-                                          			</div>
+														<input type="checkbox" id="checkbox" checked="">
+													</div>
 												</th>
 												<th th:text="${user.uid}"></th>
 												<td th:text="${user.userName}"></td>
@@ -75,15 +79,14 @@
 												<td th:text="${user.homeAddr}"></td>
 												<td th:text="${user.nowAddr}"></td>
 												<td th:text="${user.company}"></td>
-												<td align='center'>
-													<span value="" th:value="${user.uid}"
-													class="mbrEdit glyphicon glyphicon-pencil" data-toggle="modal"
-													data-target="#modalInfo"></span>
-												</td>
+												<td align='center'><span value=""
+													th:value="${user.uid}"
+													class="mbrEdit glyphicon glyphicon-pencil"
+													data-toggle="modal" data-target="#modalInfo"></span></td>
 											</tr>
 										</tbody>
 									</table>
-									
+
 									<!-- Modal -->
 									<div class="modal fade modal-info" id="modalInfo" tabindex="-1"
 										role="dialog" aria-labelledby="myModalLabel"
@@ -103,49 +106,61 @@
 															<div class="form-group">
 																<label for="uid" class="col-sm-2 control-label">id</label>
 																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="uid" disabled="disabled"  />
+																	<input type="text" class="form-control" id="uid"
+																		disabled="disabled" />
 																</div>
 															</div>
 															<div class="form-group">
 																<label for="nickName" class="col-sm-2 control-label">用户昵称</label>
 																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="nickName" placeholder="请输入昵称" />
+																	<input type="text" class="form-control" id="nickName"
+																		placeholder="请输入昵称" />
 																</div>
 															</div>
 															<div class="form-group">
 																<label for="fullName" class="col-sm-2 control-label">用户姓名</label>
 																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="fullName" disabled="disabled"  />
+																	<input type="text" class="form-control" id="fullName"
+																		disabled="disabled" />
 																</div>
 															</div>
 															<div class="form-group">
 																<label for="tel" class="col-sm-2 control-label">联系电话</label>
 																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="tel" placeholder="请输入联系电话" />
+																	<input type="text" class="form-control" id="tel"
+																		placeholder="请输入联系电话" />
 																</div>
 															</div>
 															<div class="form-group">
 																<label for="email" class="col-sm-2 control-label">电子邮件</label>
 																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="email" placeholder="请输入邮箱" />
+																	<input type="text" class="form-control" id="email"
+																		placeholder="请输入邮箱" />
 																</div>
 															</div>
 															<div class="form-group">
 																<label for="company" class="col-sm-2 control-label">公司</label>
 																<div class="col-sm-10">
-																	<input type="text" class="form-control" id="company" placeholder="请输入公司" />
+																	<input type="text" class="form-control" id="company"
+																		placeholder="请输入公司" />
 																</div>
 															</div>
 															<div class="form-group">
 																<label for="company" class="col-sm-2 control-label">角色</label>
 																<div class="col-sm-10">
-							                                        <select>
-							                                            <optgroup label="authority" index='99'>
-							                                                <option value="MG">管理员</option>
-							                                                <option value="MB">会员</option>
-							                                                <option value="TR">游客</option>
-							                                            </optgroup>
-							                                        </select>
+																	<div class="radio3 radio-check radio-inline">
+																		<input type="radio" id="adm" name="auth" value="" />
+																		<label for="adm"> 管理员 </label>
+																	</div>
+																	<div class="radio3 radio-check radio-info radio-inline">
+																		<input type="radio" id="mbr" name="auth" /> <label
+																			for="mbr"> 会员 </label>
+																	</div>
+																	<div
+																		class="radio3 radio-check radio-warning radio-inline">
+																		<input type="radio" id="tur" name="auth" /> <label
+																			for="tur"> 游客 </label>
+																	</div>
 																</div>
 															</div>
 														</form>
@@ -159,7 +174,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 									<div class="col-xs-12 col-md-offset-10">
 										<nav>
 											<ul class="pagination">
@@ -187,7 +202,7 @@
 </body>
 <script th:inline="javascript">
 	//<![CDATA[
-	var uid = /*[[${user.uid}]]*/ '10000';
+	var uid = /*[[${user.uid}]]*/'10000';
 
 	// ]]>
 </script>

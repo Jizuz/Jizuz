@@ -9,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zshoon.jizuz.common.utils.CommonUtil;
-import com.zshoon.jizuz.entity.UserDto;
+import com.zshoon.jizuz.entity.dto.UserDto;
 import com.zshoon.jizuz.service.IUserService;
 
 @Controller
 public class PageController {
-	
+
 	@Autowired
 	private IUserService userService;
 
@@ -35,7 +35,7 @@ public class PageController {
 		model.addAttribute("page", "java");
 		return "common";
 	}
-	
+
 	@RequestMapping("/memberMgt")
 	public String toMemberMgt(Model model) {
 		List<UserDto> userList = userService.findUsers();

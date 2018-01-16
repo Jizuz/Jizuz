@@ -4,15 +4,20 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.zshoon.jizuz.entity.UserDto;
+import com.zshoon.jizuz.entity.po.RolePo;
+import com.zshoon.jizuz.entity.po.UserPo;
 
 @Mapper
 public interface UserMapper {
-	
-	public List<UserDto> findUsers();
 
-	public UserDto findByUserName(String username);
+	public List<UserPo> findUsers();
+
+	public UserPo findByUserName(String username);
+
+	public UserPo findByUid(int uid);
 	
-	public UserDto findByUid(int uid);
+	public int updateUserByUid4Edit(UserPo po);
+	
+	public int updateUserRoleByUid4Edit(UserPo userPo, RolePo rolePo);
 
 }
