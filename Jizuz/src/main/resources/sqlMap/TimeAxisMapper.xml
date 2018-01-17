@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zshoon.jizuz.dao.TimeAxisMapper">
+	<resultMap type="com.zshoon.jizuz.entity.po.TimeAxisPo" id="timeAxisMap">
+		<id property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="author" column="author" />
+		<result property="timePoint" column="time_point" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, title, content, author, time_point
+	</sql>
+
+	<select id="selectTimeAxis" resultMap="timeAxisMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_time_axis order by time_point desc
+	</select>
+
+</mapper>

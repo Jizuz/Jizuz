@@ -10,6 +10,9 @@
  */
 package com.zshoon.jizuz.controller.manage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -17,12 +20,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.zshoon.jizuz.common.utils.CommonUtil;
 import com.zshoon.jizuz.common.utils.DateUtil;
 import com.zshoon.jizuz.entity.dto.RoleDto;
 import com.zshoon.jizuz.entity.dto.UserDto;
@@ -31,7 +36,7 @@ import com.zshoon.jizuz.entity.po.UserPo;
 import com.zshoon.jizuz.service.IUserService;
 
 /**
- * 〈功能详细描述〉
+ * 〈用户会员控制器〉
  *
  * @author 17081480
  * @since v1.0.0
@@ -44,9 +49,40 @@ public class MemberController {
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
+	/**
+	 * userService
+	 */
 	@Autowired
 	private IUserService userService;
 
+	/**
+	 * 〈进入会员管理页面〉
+	 *
+	 * @param model Model
+	 * @return String
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
+	@RequestMapping("/memberMgt")
+	public String toMemberMgt(Model model) {
+		List<UserDto> userList = userService.findUsers();
+		if (CommonUtil.isEmpty(userList)) {
+			model.addAttribute("users", new ArrayList<UserDto>());
+		} else {
+			model.addAttribute("users", userList);
+		}
+		model.addAttribute("page", "memberMgt");
+		return "common";
+	}
+
+	/**
+	 * 〈根据uid查询用户信息〉
+	 *
+	 * @param uid String
+	 * @return String
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
 	@ResponseBody
 	@RequestMapping(value = "getUserById", method = RequestMethod.POST)
 	public String getMemberById(@RequestParam String uid) {
@@ -59,6 +95,14 @@ public class MemberController {
 		return ret;
 	}
 
+	/**
+	 * 〈根据uid更新用户信息〉
+	 *
+	 * @param request HttpServletRequest
+	 * @return String
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
 	@ResponseBody
 	@RequestMapping(value = "updateUserById", method = RequestMethod.POST)
 	public String updateUserById(HttpServletRequest request) {

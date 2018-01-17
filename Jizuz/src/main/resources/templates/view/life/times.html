@@ -1,7 +1,23 @@
 <html>
 <body>
 	<div th:fragment="container">
-
+		<div class="side-body">
+			<section id="cd-timeline" class="cd-container">
+				<div class="cd-timeline-block" th:each="ta:${timeAxisList}">
+					<div class="cd-timeline-img cd-picture">
+						<img th:src="@{img/cd-icon-picture.svg}" alt="Picture" />
+					</div>
+					<div class="cd-timeline-content">
+						<h2 th:text="${ta.title}"></h2>
+						<p th:text="${ta.content}"></p>
+						<button class="btn btn-info">阅读全文</button>
+						<span class="cd-date" th:text="${ta.timePoint}"></span> <span
+							class="ta col-sm-offset-7">from: </span> <span class="ta"
+							th:text="${ta.author}"></span>
+					</div>
+				</div>
+			</section>
+		</div>
 	</div>
 </body>
 </html>

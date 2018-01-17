@@ -25,12 +25,28 @@ import com.zshoon.jizuz.entity.po.UserPo;
 import com.zshoon.jizuz.entity.po.UserRolePo;
 import com.zshoon.jizuz.service.IUserService;
 
-@Service
+/**
+ * 〈用户信息服务〉
+ *
+ * @author Jizuz
+ * @since v1.0.0
+ */
+@Service("userService")
 public class UserService implements IUserService {
 
+	/**
+	 * mapper
+	 */
 	@Resource
 	private UserMapper mapper;
 
+	/**
+	 * 〈查用户〉
+	 * 
+	 * @return List
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
 	@Override
 	public List<UserDto> findUsers() {
 		List<UserDto> dtoList = new ArrayList<>();
@@ -46,6 +62,14 @@ public class UserService implements IUserService {
 		return dtoList;
 	}
 
+	/**
+	 * 〈根据用户名查询用户信息〉
+	 * 
+	 * @param username String
+	 * @return UserDto
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
 	@Override
 	public UserDto findUserByUserName(String username) {
 		UserPo userPo = mapper.findByUserName(username);
@@ -54,6 +78,14 @@ public class UserService implements IUserService {
 		return dto;
 	}
 
+	/**
+	 * 〈根据uid查询用户信息〉
+	 * 
+	 * @param uid int
+	 * @return UserDto
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
 	@Override
 	public UserDto findUserBuUid(int uid) {
 		UserPo po = mapper.findByUid(uid);
@@ -61,10 +93,19 @@ public class UserService implements IUserService {
 		return dto;
 	}
 
+	/**
+	 * 〈编辑用户信息，更新u_user和u_user_role表〉
+	 * 
+	 * @param userPo UserPo
+	 * @param rolePo RolePo
+	 * @author Jizuz
+	 * @since v1.0.0
+	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
 	public void updateUserAndRole(UserPo userPo, RolePo rolePo) {
 		mapper.updateUserByUid4Edit(userPo);
+
 		UserRolePo po = new UserRolePo();
 		po.setRid(rolePo.getRid());
 		po.setUid(userPo.getUid());
@@ -72,10 +113,9 @@ public class UserService implements IUserService {
 	}
 
 	/**
-	 * 〈功能详细描述〉
+	 * 〈Po对象转成Dto对象〉
 	 *
-	 * @param userPo
-	 *            UserPo
+	 * @param userPo UserPo
 	 * @return UserDto
 	 * @throws BeansException
 	 * @author Jizuz
