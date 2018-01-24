@@ -60,13 +60,7 @@ public class PageController {
 		model.addAttribute("page", "skills");
 		return "common";
 	}
-	
-	@RequestMapping("/photo")
-	public String toPhoto(Model model) {
-		model.addAttribute("page", "photo");
-		return "common";
-	}
-	
+
 	@RequestMapping("/ps")
 	public String toPs(Model model) {
 		model.addAttribute("page", "ps");

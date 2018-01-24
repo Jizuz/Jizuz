@@ -38,7 +38,7 @@ import com.zshoon.jizuz.service.IUserService;
 /**
  * 〈用户会员控制器〉
  *
- * @author 17081480
+ * @author Jizuz
  * @since v1.0.0
  */
 @Controller
