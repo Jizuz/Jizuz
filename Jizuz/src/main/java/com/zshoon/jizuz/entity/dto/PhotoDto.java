@@ -34,9 +34,9 @@ public class PhotoDto {
 	private String date;
 
 	/**
-	 * desc:描述
+	 * comments:描述
 	 */
-	private String desc;
+	private String comments;
 
 	/**
 	 * @return the oid
@@ -114,18 +114,18 @@ public class PhotoDto {
 	}
 
 	/**
-	 * @return the desc
+	 * @return the comments
 	 */
-	public String getDesc() {
-		return desc;
+	public String getComments() {
+		return comments;
 	}
 
 	/**
-	 * @param desc
-	 *            the desc to set
+	 * @param comments
+	 *            the comments to set
 	 */
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class PhotoDto {
 	@Override
 	public String toString() {
 		return "PhotoDto [oid=" + oid + ", tid=" + tid + ", path=" + path + ", author=" + author + ", date=" + date
-				+ ", desc=" + desc + "]";
+				+ ", comments=" + comments + "]";
 	}
 
 }

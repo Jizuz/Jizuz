@@ -1,283 +1,52 @@
-<html>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <body>
 	<div th:fragment="container">
 		<div class="side-body">
-			<div class="page-title">
-				<span class="title">图集</span>
-			</div>
 			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="card-body col-md-11">
+							<form class="form-inline">
+								<div class="form-group">
+									<input type="text" class="form-control" id="authorId"
+										placeholder="作者">
+								</div>
+								<button type="submit" class="btn btn-info">查询</button>
+							</form>
+						</div>
+						<shiro:hasPermission name="add">
+						<div class="card-body col-md-1">
+							<button type="button" class="btn btn-info">+ 添加</button>
+						</div>
+						</shiro:hasPermission>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" th:each="pt, ptStat:${photoThemes}">
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">栖霞</div>
+								<div class="title" th:text="${pt.theme}"></div>
 							</div>
 						</div>
+						<!-- card begin -->
 						<div class="card-body">
 							<div>
 								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
+									<div class="col-xs-6 col-md-3"
+										th:each="photo, photoStat:${pt.photoList}">
 										<a href="#" class="thumbnail"> <img
-											th:src="@{${photoPath}}" th:attr="data-original=${photoPath}"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
+											th:src="@{${photo.path}}"
+											th:attr="data-original=${photo.path}"
 											class="lazy img-responsive" />
 										</a>
 									</div>
 								</div>
 							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="row no-margin">
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-									<div class="col-xs-6 col-md-3">
-										<a href="#" class="thumbnail"> <img
-											src="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											data-original="img/thumbnails/picjumbo.com_IMG_4566.jpg"
-											class="lazy img-responsive" />
-										</a>
-									</div>
-								</div>
-							</div>
-
 						</div>
+						<!-- card end -->
 					</div>
 				</div>
 			</div>

@@ -7,10 +7,16 @@
 		<result property="path" column="path" />
 		<result property="author" column="author" />
 		<result property="date" column="date" />
-		<result property="desc" column="desc" />
+		<result property="comments" column="comments" />
+	</resultMap>
+	<resultMap type="com.zshoon.jizuz.entity.dto.PThemeDto" id="pThemeMap">
+		<id property="tid" column="tid" />
+		<result property="theme" column="theme" />
+		<result property="state" column="state" />
+		<result property="comments" column="comments" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		oid, tid, path, author, date, desc
+		oid, tid, path, author, date, comments
 	</sql>
 
 	<select id="selectPhotos" resultMap="photoMap">
@@ -38,5 +44,9 @@
 		<include refid="Base_Column_List" />
 		from t_photo
 		where author  = #{author}
+	</select>
+	
+	<select id="selectPThemesNoSystem" resultMap="pThemeMap">
+		select tid, theme, state, comments from t_photo_theme where state = 'A' and tid not in ('1')
 	</select>
 </mapper>

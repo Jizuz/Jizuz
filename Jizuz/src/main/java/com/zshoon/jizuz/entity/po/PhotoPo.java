@@ -36,9 +36,9 @@ public class PhotoPo {
 	private Date date;
 
 	/**
-	 * desc:描述
+	 * comments:描述
 	 */
-	private String desc;
+	private String comments;
 
 	/**
 	 * @return the oid
@@ -116,18 +116,18 @@ public class PhotoPo {
 	}
 
 	/**
-	 * @return the desc
+	 * @return the comments
 	 */
-	public String getDesc() {
-		return desc;
+	public String getComments() {
+		return comments;
 	}
 
 	/**
-	 * @param desc
-	 *            the desc to set
+	 * @param comments
+	 *            the comments to set
 	 */
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class PhotoPo {
 	@Override
 	public String toString() {
 		return "PhotoPo [oid=" + oid + ", tid=" + tid + ", path=" + path + ", author=" + author + ", date=" + date
-				+ ", desc=" + desc + "]";
+				+ ", comments=" + comments + "]";
 	}
 
 }

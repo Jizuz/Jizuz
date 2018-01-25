@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.zshoon.jizuz.entity.dto.PThemeDto;
 import com.zshoon.jizuz.entity.po.PhotoPo;
 
 /**
@@ -22,5 +23,7 @@ public interface PhotoMapper {
 	public List<PhotoPo> selectPhotosByTid(Long tid);
 	
 	public List<PhotoPo> selectPhotosByAuthor(String author);
+	
+	public List<PThemeDto> selectPThemesNoSystem();
 	
 }
