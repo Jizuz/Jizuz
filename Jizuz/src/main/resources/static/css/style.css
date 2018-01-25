@@ -9,6 +9,14 @@ body {
 	font-size: 13px;
 }
 
+.select2-dropdown {
+    z-index: 10050 !important;
+}
+
+optgroup {
+    z-index: 10051 !important;
+}
+    
 .table>thead>tr>th {
 	text-align: center;
 }

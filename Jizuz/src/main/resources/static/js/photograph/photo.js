@@ -16,4 +16,8 @@ $(function() {
 		}
 
 	});
+	
+	$('#uploadImg').click(function() {
+		
+	});
 })
