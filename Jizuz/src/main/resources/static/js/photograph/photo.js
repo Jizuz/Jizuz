@@ -17,7 +17,27 @@ $(function() {
 
 	});
 	
+	// 图片弹出层
+	$(".imgLayBg").height($(document).height());
+	$(".imgClaose").click(function() {
+		$(".imgLayBg,.imglayBox").hide()
+	});
+	$(".imgShow").click(function() {
+		$(".img_html").html($(this).find(".hidden").html());
+		$(".imgLayBg").show();
+		$(".imglayBox").fadeIn(300)
+	});
+	
+	// 选择下拉框
+	$("#imgTheme").select2({
+        placeholder: "请选择",
+        dropdownParent: $("#modalAddImg"),
+        allowClear: true
+    });
+	
+	// 上传图片
 	$('#uploadImg').click(function() {
 		
 	});
+
 })

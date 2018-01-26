@@ -9,14 +9,20 @@ body {
 	font-size: 13px;
 }
 
-.select2-dropdown {
-    z-index: 10050 !important;
+.select2-dropdown .select2-dropdown--below {
+	z-index: 10050 !important;
 }
 
-optgroup {
-    z-index: 10051 !important;
+.select2-results {
+	z-index: 10051 !important;
 }
-    
+
+.select2-search {
+	margin-top: 0 !important;
+	right: 2px !important;
+	min-height: 10px;
+}
+
 .table>thead>tr>th {
 	text-align: center;
 }
@@ -1763,3 +1769,41 @@ body.login-page .login-footer {
 		margin-bottom: 20px;
 	}
 }
+
+/* 效果CSS开始 */
+.imgLayBg {
+	background: #000;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 10;
+	opacity: 0.7;
+	filter: alpha(opacity = 70);
+	display: none;
+	_display: none !important;
+	position: absolute;
+}
+
+.imglayBox {
+	margin-right: 30px;
+	position: relative;
+	border: 7px solid #FFF;
+	z-index: 20;
+	background: #FFF;
+	display: none;
+	_display: none !important;
+	position: fixed;
+}
+
+.imgClaose {
+	position: absolute;
+	top: -17px;
+	right: -17px;
+	cursor: pointer;
+}
+
+.img_html {
+	height: 100%;
+}
+/* 效果CSS结束 */
