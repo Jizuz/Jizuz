@@ -119,6 +119,20 @@ public class DateUtil {
 	}
 	
 	/*
+	 * 
+	 */
+	@SuppressWarnings("unused")
+	public static String getCurrentDate2String(String format) {
+		Date date = new Date();
+		if (null == date) {
+			return "";
+		}
+		
+		SimpleDateFormat sdf = getDateFormat(format);
+		return sdf.format(date);
+	}
+	
+	/*
 	 * 文件名时间命名，yyyyMMdd_HHmmss
 	 */
 	public static String getNameFileCurrentDate() {

@@ -16,7 +16,7 @@ $(function() {
 		}
 
 	});
-	
+
 	// 图片弹出层
 	$(".imgLayBg").height($(document).height());
 	$(".imgClaose").click(function() {
@@ -27,17 +27,60 @@ $(function() {
 		$(".imgLayBg").show();
 		$(".imglayBox").fadeIn(300)
 	});
-	
+
 	// 选择下拉框
 	$("#imgTheme").select2({
-        placeholder: "请选择",
-        dropdownParent: $("#modalAddImg"),
-        allowClear: true
-    });
-	
-	// 上传图片
-	$('#uploadImg').click(function() {
-		
+		placeholder : "请选择",
+		dropdownParent : $("#modalAddImg"),
+		allowClear : true
 	});
 
+	// 上传图片
+	$('#submitUpload').click(function() {
+
+	});
+
+	$('#fileImg').uploadify(
+			{
+				swf : 'lib/uploadify.swf',
+				uploader : 'uploadImg',
+				auto : true, // 文件添加到队列后自动上传
+				successTimeout : 9999999, // 上传超时时间
+				fileObjName : 'img',
+				fileSizeLimit : '1000 MB', // 上传文件的大小限制，可以使用B\KB\MB\GB单位，填0表示不限制。
+				fileTypeExts : '*.jpeg;*.jpg;*.png;*.bmp', // 选择文件时允许的扩展名
+				multi : false, // 是否支持同时上传多个文件
+				// 返回一个错误，选择文件的时候触发
+				onSelectError : function(file, errorCode, errorMsg) {
+					alert(errorCode);
+					switch (errorCode) {
+					case -100:
+						alert("上传的文件数量已经超出系统限制的"
+								+ $('#fileImg').uploadify('settings',
+										'queueSizeLimit') + "个文件！");
+						break;
+					case -110:
+						alert("文件 ["
+								+ file.name
+								+ "] 大小超出系统限制的"
+								+ $('#fileImg').uploadify('settings',
+										'fileSizeLimit') + "大小！");
+						break;
+					case -120:
+						alert("文件 [" + file.name + "] 大小异常！");
+						break;
+					case -130:
+						alert("文件 [" + file.name + "] 类型不正确！");
+						break;
+					}
+					alert(errorMsg);
+				},
+				// 检测FLASH失败调用
+				onFallback : function() {
+					alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
+				},
+				onUploadSuccess : function(file, data, response) {
+					// TODO
+				}
+			});
 })
