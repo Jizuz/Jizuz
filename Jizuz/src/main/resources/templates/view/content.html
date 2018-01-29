@@ -1,0 +1,27 @@
+<html>
+<body>
+	<div th:fragment="container">
+		<div class="side-body">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="atitle" th:text="${artc.title}"></div>
+							<hr style="border: 1px dashed #e8e8e8;">
+							<div class="row">
+								<div class="col-md-2 col-xs-12">
+									<label for="author">来自：</label> <span th:text="${artc.author}"></span>
+								</div>
+								<div class="col-md-10 col-xs-12">
+									<label for="date">日期：</label> <span th:text="${artc.date}"></span>
+								</div>
+							</div>
+							<div class="acontent" th:utext="${artc.content}"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

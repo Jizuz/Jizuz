@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zshoon.jizuz.dao.ArticleMapper">
+	<resultMap type="com.zshoon.jizuz.entity.po.ArticlePo" id="articleMap">
+		<id property="aid" column="aid" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="author" column="author" />
+		<result property="date" column="date" />
+		<result property="star" column="star" />
+		<result property="state" column="state" />
+		<result property="type" column="type" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		aid, title, content, author, date, star, state, type
+	</sql>
+
+	<select id="selectArticlesByType" resultMap="articleMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_article
+		where type = #{type}
+		and state = 'A'
+	</select>
+
+	<select id="selectArticleById" resultMap="articleMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_article
+		where aid = #{aid}
+		and state = 'A'
+	</select>
+</mapper>

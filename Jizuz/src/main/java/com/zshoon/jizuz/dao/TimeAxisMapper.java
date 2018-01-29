@@ -17,14 +17,14 @@ import org.apache.ibatis.annotations.Mapper;
 import com.zshoon.jizuz.entity.po.TimeAxisPo;
 
 /**
- * 〈功能详细描述〉
+ * 〈TimeAxisMapper〉
  *
  * @author Jizuz
  * @since v1.0.0
  */
 @Mapper
 public interface TimeAxisMapper {
-	
+
 	public List<TimeAxisPo> selectTimeAxis();
 
 }
