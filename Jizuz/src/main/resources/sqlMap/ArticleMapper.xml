@@ -30,4 +30,12 @@
 		where aid = #{aid}
 		and state = 'A'
 	</select>
+
+	<insert id="insertArticle" parameterType="com.zshoon.jizuz.entity.po.ArticlePo">
+		insert into
+		t_article(aid, title, content, author, date, star, state, type)
+		values
+		(#{aid}, #{title}, #{content}, #{author}, #{date}, #{star}, #{state},
+		#{type})
+	</insert>
 </mapper>

@@ -10,9 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.zshoon.jizuz.entity.dto.ArticleDto;
 import com.zshoon.jizuz.service.IArticleService;
 
+/**
+ * 〈页面跳转controller〉
+ *
+ * @author Jizuz
+ * @since v1.0.0
+ */
 @Controller
 public class PageController {
 
+	/**
+	 * articleService
+	 */
 	@Autowired
 	private IArticleService articleService;
 
@@ -34,7 +43,7 @@ public class PageController {
 	 * @param model
 	 * @param request
 	 * @return String
-	 * @author 17081480
+	 * @author Jizuz
 	 * @since v1.0.0
 	 */
 	@RequestMapping("/content")

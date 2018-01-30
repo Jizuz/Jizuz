@@ -1,8 +1,8 @@
 package com.zshoon.jizuz.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import com.zshoon.jizuz.common.helper.SequenceHelper;
 import com.zshoon.jizuz.common.utils.CommonUtil;
 import com.zshoon.jizuz.common.utils.DateUtil;
 import com.zshoon.jizuz.dao.ArticleMapper;
@@ -20,7 +21,7 @@ import com.zshoon.jizuz.service.IArticleService;
 /**
  * 〈文章管理接口〉
  *
- * @author 17081480
+ * @author Jizuz
  * @since v1.0.0
  */
 @Service("articleService")
@@ -37,15 +38,6 @@ public class ArticleService implements IArticleService {
 	@Resource
 	private ArticleMapper mapper;
 
-	/**
-	 * 〈按类型获取文章〉
-	 * 
-	 * @param type
-	 *            String
-	 * @return List
-	 * @author Jizuz
-	 * @since v1.0.0
-	 */
 	@Override
 	public List<ArticleDto> getArticlesByType(String type) {
 		logger.debug("getArticlesByType begin ...");
@@ -81,7 +73,7 @@ public class ArticleService implements IArticleService {
 	 *
 	 * @param dtoList
 	 * @param poList
-	 * @author 17081480
+	 * @author Jizuz
 	 * @since v1.0.0
 	 */
 	private void po2Dto(List<ArticleDto> dtoList, List<ArticlePo> poList) {
@@ -94,6 +86,31 @@ public class ArticleService implements IArticleService {
 				dtoList.add(dto);
 			}
 		}
+	}
+
+	@Override
+	public boolean addArticle(ArticleDto dto) {
+		// 当前日期格式化
+		String dateStr = DateUtil.date2String(new Date(), DateUtil.DATE_FORMAT_1);
+		ArticlePo po = new ArticlePo();
+		BeanUtils.copyProperties(dto, po);
+		po.setDate(DateUtil.string2Date(dateStr, DateUtil.DATE_FORMAT_1));
+		// 获取新的id
+		Long id = SequenceHelper.generateId("aid", "t_article");
+		po.setAid(id);
+		po.setStar(0);
+		po.setState("A");
+
+		try {
+			int ret = mapper.insertArticle(po);
+			if (ret > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error("数据库操作错误，{}", e);
+		}
+
+		return false;
 	}
 
 }

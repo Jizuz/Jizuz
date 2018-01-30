@@ -15,43 +15,43 @@
 			
 			<div class="modal fade modal-info" id="modalAddArticle"
 				aria-labelledby="artcModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
+				<div class="modal-dialog-article">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h4 class="modal-title" id="imgModalLabel">添加文章</h4>
+							<h4 class="modal-title" id="artcModalLabel">添加文章</h4>
 						</div>
 						<div class="modal-body">
 							<div class="col-xs-12">
 								<form class="form-horizontal">
 									<div class="form-group">
-										<label for="comments" class="col-sm-2 control-label">标题</label>
-										<div class="col-sm-10">
+										<label for="artcType" class="col-sm-1 control-label">分类</label>
+										<div class="col-sm-11">
+											<select id="articType" style="width: 100%;">
+												<option value="1">java</option>
+												<option value="2">python</option>
+												<option value="3">php</option>
+												<option value="4">front</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="newTitle" class="col-sm-1 control-label">标题</label>
+										<div class="col-sm-11">
 											<div>
 												<input class="form-control" rows="3" id="newTitle"></textarea>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="comments" class="col-sm-2 control-label">正文</label>
-										<div class="col-sm-10">
+										<label for="newContent" class="col-sm-1 control-label">正文</label>
+										<div class="col-sm-11">
 											<div>
-												<textarea class="form-control" rows="3" id="newContent"></textarea>
+												<textarea class="ckeditor form-control" rows="3" id="newContent"></textarea>
 											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="theme" class="col-sm-2 control-label">分类</label>
-										<div class="col-sm-10">
-											<select id="articleType" style="width: 100%;">
-												<option value="1">java</option>
-												<option value="2">python</option>
-												<option value="3">php</option>
-												<option value="4">front</option>
-											</select>
 										</div>
 									</div>
 								</form>
@@ -68,4 +68,7 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	CKEDITOR.replace('newContent');
+</script>
 </html>

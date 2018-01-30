@@ -9,18 +9,27 @@ body {
 	font-size: 13px;
 }
 
+.modal-dialog-article {
+    width: 70%;
+    margin: 30px auto;
+}
+
 .select2-dropdown .select2-dropdown--below {
-	z-index: 10050 !important;
+	z-index: 100002 !important;
 }
 
 .select2-results {
-	z-index: 10051 !important;
+	z-index: 100003 !important;
 }
 
 .select2-search {
 	margin-top: 0 !important;
 	right: 2px !important;
 	min-height: 10px;
+}
+
+.cke_dialog {
+	z-index: 1000000 !important;
 }
 
 .table>thead>tr>th {
