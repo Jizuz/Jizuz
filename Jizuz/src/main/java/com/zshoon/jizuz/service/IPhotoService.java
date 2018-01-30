@@ -16,4 +16,6 @@ public interface IPhotoService {
 	List<PThemeDto> getPhotoThemes();
 	
 	List<PhotoDto> getPhotosByTid(Long tid);
+	
+	boolean addImage(PhotoDto dto);
 }

@@ -26,4 +26,6 @@ public interface PhotoMapper {
 	
 	public List<PThemeDto> selectPThemesNoSystem();
 	
+	public int insertPhoto(PhotoPo po);
+	
 }

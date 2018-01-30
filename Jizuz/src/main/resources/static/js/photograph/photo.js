@@ -37,7 +37,22 @@ $(function() {
 
 	// 上传图片
 	$('#submitUpload').click(function() {
-
+		$.ajax({
+			type : "post",
+			url : "addImg",
+			data : {
+				'imgTheme' : $('#imgTheme').val(),
+				'imgComment' : $('#commentImg').val(),
+			},
+			dataType : "json",
+			async : false,
+			success : function(data) {
+				
+			},
+			error : function(data, error) {
+				alert("faild! " + error);
+			}
+		});
 	});
 
 	$('#fileImg').uploadify(
@@ -45,11 +60,10 @@ $(function() {
 				swf : 'lib/uploadify.swf',
 				uploader : 'uploadImg',
 				auto : true, // 文件添加到队列后自动上传
-				successTimeout : 9999999, // 上传超时时间
-				fileObjName : 'img',
-				fileSizeLimit : '1000 MB', // 上传文件的大小限制，可以使用B\KB\MB\GB单位，填0表示不限制。
-				fileTypeExts : '*.jpeg;*.jpg;*.png;*.bmp', // 选择文件时允许的扩展名
-				multi : false, // 是否支持同时上传多个文件
+				successTimeout : 9999999,
+				fileSizeLimit : '1000 MB',
+				fileTypeExts : '*.jpeg;*.jpg;*.png;*.bmp',
+				multi : false,
 				// 返回一个错误，选择文件的时候触发
 				onSelectError : function(file, errorCode, errorMsg) {
 					alert(errorCode);

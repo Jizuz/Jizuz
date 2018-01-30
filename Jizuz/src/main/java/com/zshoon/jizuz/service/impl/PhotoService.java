@@ -1,21 +1,25 @@
 package com.zshoon.jizuz.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.stereotype.Service;
 
+import com.zshoon.jizuz.common.helper.SequenceHelper;
 import com.zshoon.jizuz.common.utils.CommonUtil;
 import com.zshoon.jizuz.common.utils.DateUtil;
 import com.zshoon.jizuz.dao.PhotoMapper;
 import com.zshoon.jizuz.entity.dto.PThemeDto;
 import com.zshoon.jizuz.entity.dto.PhotoDto;
+import com.zshoon.jizuz.entity.dto.UserDto;
 import com.zshoon.jizuz.entity.po.PhotoPo;
 import com.zshoon.jizuz.service.IPhotoService;
 
@@ -84,6 +88,31 @@ public class PhotoService implements IPhotoService {
 				dtoList.add(dto);
 			}
 		}
+	}
+
+	@Override
+	public boolean addImage(PhotoDto dto) {
+		String dateStr = DateUtil.date2String(new Date(), DateUtil.DATE_FORMAT_1);
+		UserDto user = (UserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+		// 获取新的id
+		Long id = SequenceHelper.generateId("oid", "t_photo");
+		
+		PhotoPo po = new PhotoPo();
+		BeanUtils.copyProperties(dto, po);
+		po.setDate(DateUtil.string2Date(dateStr, DateUtil.DATE_FORMAT_1));
+		po.setAuthor(user.getUserName());
+		po.setOid(id);
+		
+		try {
+			int ret = mapper.insertPhoto(po);
+			if (ret > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error("数据库操作错误，{}", e);
+		}
+		
+		return false;
 	}
 
 }

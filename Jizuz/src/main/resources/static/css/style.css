@@ -9,6 +9,11 @@ body {
 	font-size: 13px;
 }
 
+li.github>a {
+	color: #d9d6c3 !important;
+	font-size: 12px !important;
+}
+
 .modal-dialog-article {
     width: 70%;
     margin: 30px auto;
