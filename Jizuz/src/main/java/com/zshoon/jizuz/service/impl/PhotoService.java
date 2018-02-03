@@ -43,6 +43,12 @@ public class PhotoService implements IPhotoService {
 	@Resource
 	private PhotoMapper mapper;
 
+	/**
+	 * <Description> 根据图片主题
+	 * 
+	 * @author Jizuz
+	 * @return List
+	 */
 	@Override
 	public List<PThemeDto> getPhotoThemes() {
 		List<PThemeDto> dtoList = new ArrayList<>();
@@ -55,6 +61,13 @@ public class PhotoService implements IPhotoService {
 		return dtoList;
 	}
 
+	/**
+	 * <Description> 根据主题id查询图片
+	 * 
+	 * @author Jizuz
+	 * @param tid
+	 * @return List
+	 */
 	@Override
 	public List<PhotoDto> getPhotosByTid(Long tid) {
 		List<PhotoDto> dtoList = new ArrayList<>();
@@ -90,19 +103,26 @@ public class PhotoService implements IPhotoService {
 		}
 	}
 
+	/**
+	 * <Description> 添加图片
+	 * 
+	 * @author Jizuz
+	 * @param dto
+	 * @return boolean
+	 */
 	@Override
 	public boolean addImage(PhotoDto dto) {
 		String dateStr = DateUtil.date2String(new Date(), DateUtil.DATE_FORMAT_1);
 		UserDto user = (UserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
 		// 获取新的id
 		Long id = SequenceHelper.generateId("oid", "t_photo");
-		
+
 		PhotoPo po = new PhotoPo();
 		BeanUtils.copyProperties(dto, po);
 		po.setDate(DateUtil.string2Date(dateStr, DateUtil.DATE_FORMAT_1));
 		po.setAuthor(user.getUserName());
 		po.setOid(id);
-		
+
 		try {
 			int ret = mapper.insertPhoto(po);
 			if (ret > 0) {
@@ -111,7 +131,7 @@ public class PhotoService implements IPhotoService {
 		} catch (Exception e) {
 			logger.error("数据库操作错误，{}", e);
 		}
-		
+
 		return false;
 	}
 

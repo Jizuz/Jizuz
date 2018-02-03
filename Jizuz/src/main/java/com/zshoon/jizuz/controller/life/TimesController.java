@@ -33,6 +33,13 @@ public class TimesController {
 	@Autowired
 	private ITimeAxisService timeAxisService;
 
+	/**
+	 * <Description> 查询时间轴
+	 * 
+	 * @author Jizuz
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("times")
 	public String getTimeAxis(Model model) {
 		logger.debug("getTimeAxis begin ...");

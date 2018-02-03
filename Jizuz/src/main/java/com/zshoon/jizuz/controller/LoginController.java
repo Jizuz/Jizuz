@@ -12,14 +12,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zshoon.jizuz.entity.dto.UserDto;
 
+/**
+ * <Description> LoginController
+ * 
+ * @author Jizuz
+ * @version V1.0
+ * @CreateDate 2018年2月3日
+ * @since V1.0
+ * @see com.zshoon.jizuz.controller
+ */
 @Controller
 public class LoginController {
 
+	/**
+	 * <Description> 系统登录
+	 * 
+	 * @author Jizuz
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("login")
 	public String loginSys(Model model) {
 		return "login";
 	}
 
+	/**
+	 * <Description> 用户登录
+	 * 
+	 * @author Jizuz
+	 * @param username
+	 * @param password
+	 * @param session
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping(value = "/loginUser", method = RequestMethod.POST)
 	public String loginUser(String username, String password, HttpSession session, Model model) {
 		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
@@ -38,6 +64,13 @@ public class LoginController {
 
 	}
 
+	/**
+	 * <Description> 注销
+	 * 
+	 * @author Jizuz
+	 * @param session
+	 * @return String
+	 */
 	@RequestMapping("/logOut")
 	public String logOut(HttpSession session) {
 		try {

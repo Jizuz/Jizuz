@@ -92,10 +92,10 @@ public class PhotoController {
 	public void uploadImg(@RequestParam("Filedata")MultipartFile img, HttpServletRequest request) throws Exception {
 		String extName = "";
 		HttpSession session = request.getSession();
-		session.removeAttribute("pathName");
+//		session.removeAttribute("pathName");
 
 		// TODO 配置文件配置
-		// String realPath = "/img/photos";
+//		String realPath = "img/photos";
 		String realPath = "D:\\Java\\Jizuz\\repo\\Jizuz\\Jizuz\\src\\main\\resources\\static\\img\\photos";
 		logger.debug("real path is : {}", realPath);
 		File file = new File(realPath);

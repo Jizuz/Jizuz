@@ -25,6 +25,12 @@ import com.zshoon.jizuz.entity.po.TimeAxisPo;
 @Mapper
 public interface TimeAxisMapper {
 
+	/**
+	 * <Description> 查询时间轴列表
+	 * 
+	 * @author Jizuz
+	 * @return List
+	 */
 	public List<TimeAxisPo> selectTimeAxis();
 
 }
