@@ -1,7 +1,38 @@
 <html>
 <body>
 	<div th:fragment="container">
-
+		<div class="side-body">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="card-body">
+							<div>
+								<div class="list-group">
+									<div class="list-group-item" th:each="front, frontStat:${frontList}">
+										<div>
+											<a th:href="@{content(aid=${front.aid})}">
+												<strong><p th:text="${front.title}" /></strong>
+											</a>
+										</div>
+										<span class="badge"> 
+											<span class="glyphicon glyphicon-duplicate">
+												<span th:text="${front.star}"></span>
+											</span>
+										</span>
+										<span class="badge">
+											<span class="glyphicon glyphicon-thumbs-up">
+												<span th:text="${front.star}"></span>
+											</span>
+										</span>
+										<div th:text="${front.author}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

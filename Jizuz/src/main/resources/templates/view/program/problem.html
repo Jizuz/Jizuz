@@ -1,7 +1,38 @@
 <html>
 <body>
 	<div th:fragment="container">
-
+		<div class="side-body">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="card-body">
+							<div>
+								<div class="list-group">
+									<div class="list-group-item" th:each="problem, problemStat:${problemList}">
+										<div>
+											<a th:href="@{content(aid=${problem.aid})}">
+												<strong><p th:text="${problem.title}" /></strong>
+											</a>
+										</div>
+										<span class="badge">
+											<span class="glyphicon glyphicon-duplicate">
+												<span th:text="${problem.star}"></span>
+											</span>
+										</span>
+										<span class="badge">
+											<span class="glyphicon glyphicon-thumbs-up">
+												<span th:text="${problem.star}"></span>
+											</span>
+										</span>
+										<div th:text="${problem.author}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

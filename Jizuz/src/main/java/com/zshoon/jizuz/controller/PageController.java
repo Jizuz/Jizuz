@@ -55,39 +55,9 @@ public class PageController {
 		return "common";
 	}
 
-	@RequestMapping("/py")
-	public String toPy(Model model) {
-		model.addAttribute("page", "py");
-		return "common";
-	}
-
-	@RequestMapping("/php")
-	public String toPhp(Model model) {
-		model.addAttribute("page", "php");
-		return "common";
-	}
-
-	@RequestMapping("/webgl")
-	public String toWebGL(Model model) {
-		model.addAttribute("page", "webgl");
-		return "common";
-	}
-
-	@RequestMapping("/front")
-	public String toFront(Model model) {
-		model.addAttribute("page", "front");
-		return "common";
-	}
-
-	@RequestMapping("/problem")
-	public String toProblem(Model model) {
-		model.addAttribute("page", "problem");
-		return "common";
-	}
-
-	@RequestMapping("/skills")
+	@RequestMapping("/shoot")
 	public String toSkill(Model model) {
-		model.addAttribute("page", "skills");
+		model.addAttribute("page", "shoot");
 		return "common";
 	}
 

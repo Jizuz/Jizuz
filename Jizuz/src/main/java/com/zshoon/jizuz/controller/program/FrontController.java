@@ -14,18 +14,21 @@ import com.zshoon.jizuz.entity.dto.ArticleDto;
 import com.zshoon.jizuz.service.IArticleService;
 
 /**
- * 〈JavaController〉
- *
- * @author 17081480
- * @since v1.0.0
+ * <Description> FrontController
+ * 
+ * @author Jizuz
+ * @version V1.0
+ * @CreateDate 2018年2月3日
+ * @since V1.0
+ * @see com.zshoon.jizuz.controller.program
  */
 @Controller
-public class JavaController {
+public class FrontController {
 
 	/**
 	 * logger
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(JavaController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FrontController.class);
 
 	/**
 	 * articleService
@@ -34,22 +37,21 @@ public class JavaController {
 	private IArticleService articleService;
 
 	/**
-	 * <Description> 跳转Java页
+	 * <Description> 跳转前端页
 	 * 
 	 * @author Jizuz
 	 * @param model
 	 * @return String
 	 */
-	@RequestMapping("/java")
-	public String toJava(Model model) {
-		logger.debug("toJava begin ...");
-		model.addAttribute("page", "java");
+	@RequestMapping("/front")
+	public String toFront(Model model) {
+		logger.debug("toFront begin ...");
+		model.addAttribute("page", "front");
 
-		List<ArticleDto> dtoList = articleService.getArticlesByType(ArticleTypeEnum.JAVA.getCode());
-		model.addAttribute("javaList", dtoList);
+		List<ArticleDto> dtoList = articleService.getArticlesByType(ArticleTypeEnum.FRONT.getCode());
+		model.addAttribute("frontList", dtoList);
 
-		logger.debug("toJava end ...");
+		logger.debug("toFront end ...");
 		return "common";
 	}
-
 }
