@@ -55,46 +55,40 @@ $(function() {
 		});
 	});
 
-	$('#fileImg').uploadify(
-			{
-				swf : 'lib/uploadify.swf',
-				uploader : 'uploadImg',
-				auto : true, // 文件添加到队列后自动上传
-				successTimeout : 9999999,
-				fileSizeLimit : '1000 MB',
-				fileTypeExts : '*.jpeg;*.jpg;*.png;*.bmp',
-				multi : false,
-				// 返回一个错误，选择文件的时候触发
-				onSelectError : function(file, errorCode, errorMsg) {
-					alert(errorCode);
-					switch (errorCode) {
-					case -100:
-						alert("上传的文件数量已经超出系统限制的"
-								+ $('#fileImg').uploadify('settings',
-										'queueSizeLimit') + "个文件！");
-						break;
-					case -110:
-						alert("文件 ["
-								+ file.name
-								+ "] 大小超出系统限制的"
-								+ $('#fileImg').uploadify('settings',
-										'fileSizeLimit') + "大小！");
-						break;
-					case -120:
-						alert("文件 [" + file.name + "] 大小异常！");
-						break;
-					case -130:
-						alert("文件 [" + file.name + "] 类型不正确！");
-						break;
-					}
-					alert(errorMsg);
-				},
-				// 检测FLASH失败调用
-				onFallback : function() {
-					alert("您未安装FLASH控件，无法上传图片！请安装FLASH控件后再试。");
-				},
-				onUploadSuccess : function(file, data, response) {
-					// TODO
-				}
-			});
+	$('#fileImg').uploadify({
+		swf : 'lib/uploadify.swf',
+		uploader : 'uploadImg',
+		auto : true, // 文件添加到队列后自动上传
+		successTimeout : 9999999,
+		fileSizeLimit : '1000 MB',
+		fileTypeExts : '*.jpeg;*.jpg;*.png;*.bmp',
+		multi : false,
+		// 返回一个错误，选择文件的时候触发
+		onSelectError : function(file, errorCode, errorMsg) {
+			alert(errorCode, {skin : 'layui-layer-molv'});
+			switch (errorCode) {
+			case -100:
+				alert("上传的文件数量已经超出系统限制的" + $('#fileImg').uploadify('settings',
+								'queueSizeLimit') + "个文件！", {skin : 'layui-layer-molv'});
+				break;
+			case -110:
+				alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#fileImg').uploadify('settings',
+								'fileSizeLimit') + "大小！", {skin : 'layui-layer-molv'});
+				break;
+			case -120:
+				alert("文件 [" + file.name + "] 大小异常！", {skin : 'layui-layer-molv'});
+				break;
+			case -130:
+				alert("文件 [" + file.name + "] 类型不正确！", {skin : 'layui-layer-molv'});
+				break;
+			}
+			alert(errorMsg, {skin : 'layui-layer-molv'});
+		},
+		onFallback : function() {
+			alert("您未安装FLASH控件，无法上传图片。", {skin : 'layui-layer-molv'});
+		},
+		onUploadSuccess : function(file, data, response) {
+			// TODO
+		}
+	});
 })

@@ -2,6 +2,7 @@ package com.zshoon.jizuz.controller.manage;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
+import com.zshoon.jizuz.common.constants.CommonMessageCode;
+import com.zshoon.jizuz.entity.MessageBo;
 import com.zshoon.jizuz.entity.dto.ArticleDto;
 import com.zshoon.jizuz.entity.dto.UserDto;
 import com.zshoon.jizuz.service.IArticleService;
@@ -45,8 +47,9 @@ public class ArticleController {
 	 */
 	@ResponseBody
 	@RequestMapping("/addArticle")
-	public String addArticle(HttpServletRequest request) {
+	public MessageBo addArticle(HttpServletRequest request) {
 		logger.debug("add article begin ...");
+		MessageBo msg = new MessageBo();
 
 		UserDto user = (UserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
 		ArticleDto artcDto = new ArticleDto();
@@ -55,10 +58,25 @@ public class ArticleController {
 		artcDto.setTitle(request.getParameter("artcTitle"));
 		artcDto.setContent(request.getParameter("artcContent"));
 
-		boolean retFlag = articleService.addArticle(artcDto);
+		if (StringUtils.isBlank(request.getParameter("artcTitle"))) {
+			msg.setCode(CommonMessageCode.COMMON_ERROR);
+			msg.setContent("请输入标题。");
+			return msg;
+		}
+
+		try {
+			boolean retFlag = articleService.addArticle(artcDto);
+			if (!retFlag) {
+				msg.setCode(CommonMessageCode.COMMON_ERROR);
+				msg.setContent("插入文章失败。");
+			}
+		} catch (Exception e) {
+			msg.setCode(CommonMessageCode.COMMON_ERROR);
+			msg.setContent("数据库操作错误。");
+		}
 
 		logger.debug("add article end ...");
-		return (retFlag) ? JSON.toJSONString("success") : "error";
+		return msg;
 	}
 
 }

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import com.zshoon.jizuz.common.constants.CommonConstant;
 import com.zshoon.jizuz.common.helper.SequenceHelper;
 import com.zshoon.jizuz.common.utils.CommonUtil;
 import com.zshoon.jizuz.common.utils.DateUtil;
@@ -99,7 +100,7 @@ public class ArticleService implements IArticleService {
 		Long id = SequenceHelper.generateId("aid", "t_article");
 		po.setAid(id);
 		po.setStar(0);
-		po.setState("A");
+		po.setState(CommonConstant.ACTIVE);
 
 		try {
 			int ret = mapper.insertArticle(po);
@@ -108,6 +109,7 @@ public class ArticleService implements IArticleService {
 			}
 		} catch (Exception e) {
 			logger.error("数据库操作错误，{}", e);
+			throw e;
 		}
 
 		return false;

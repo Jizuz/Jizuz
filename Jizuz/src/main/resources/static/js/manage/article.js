@@ -20,7 +20,11 @@ $(function() {
 			dataType : "json",
 			async : false,
 			success : function(data) {
-				$('#modalAddArticle').modal('hide');
+				if (data.code == '200') {
+					$('#modalAddArticle').modal('hide');
+				} else {
+					alert(data.content, {skin : 'layui-layer-molv'});
+				}
 			},
 			error : function(data, error) {
 				alert("faild! " + error);
