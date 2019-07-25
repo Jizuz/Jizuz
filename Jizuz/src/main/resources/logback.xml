@@ -17,7 +17,7 @@
 	<!-- 文件保存日志的相关配置 -->
 	<appender name="ERROR-OUT"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>D:/Java/logs/jizuz/opt.log</file>
+		<file>/home/jizuz/workspace/logs/jizuz/opt.log</file>
 		<encoder>
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
 		</encoder>
